@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Perintis Studio - Official Website</title>
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+
+    <!--calendar css-->
+    <link href="plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet" />
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Date Picker -->
+    <link href="plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="plugins/glyphicons/glyphicon-bootstrap.css" rel="stylesheet" />
+
+    <!-- Toastr css -->
+    <link href="plugins/jquery-toastr/jquery.toast.min.css" rel="stylesheet" />
+
+    <!-- Sweet Alert css -->
+    <link href="plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="assets/js/modernizr.min.js"></script>
+
+    <!-- DataTables -->
+    <link href="plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Responsive datatable -->
+    <link href="plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Custom box css -->
+    <link href="plugins/custombox/css/custombox.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="vendor/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="vendor/assets/css/templatemo-space-dynamic.css">
+    <link rel="stylesheet" href="vendor/assets/css/animated.css">
+    <link rel="stylesheet" href="vendor/assets/css/owl.css">
+    <!--
+
+    TemplateMo 562 Space Dynamic
+
+    https://templatemo.com/tm-562-space-dynamic
+
+    -->
+
+    <style>
+        .balokBox {
+            width: 120px;
+            height: 25px;
+            border-radius: 10px;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style> 
+
+<style>
+	body {
+	  font-family: Arial;
+	  margin: 0;
+	}
+	
+	* {
+	  box-sizing: border-box;
+	}
+	
+	img {
+	  vertical-align: middle;
+	}
+	
+	/* Position the image container (needed to position the left and right arrows) */
+	.container {
+	  position: relative;
+	}
+	
+	/* Hide the images by default */
+	.mySlides {
+	  display: none;
+	}
+	
+	/* Add a pointer when hovering over the thumbnail images */
+	.cursor {
+	  cursor: pointer;
+	}
+	
+	/* Next & previous buttons */
+	.prev,
+	.next {
+		cursor: pointer;
+		position: absolute;
+		top: 40%;
+		width: auto;
+		padding: 16px;
+		margin-top: -50px;
+		color: white;
+		font-weight: bold;
+		font-size: 20px;
+		border-radius: 0 3px 3px 0;
+		user-select: none;
+		-webkit-user-select: none;
+		}
+	
+	/* Position the "next button" to the right */
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+	
+	/* On hover, add a black background color with a little bit see-through */
+	.prev:hover,
+	.next:hover {
+	  background-color: rgba(0, 0, 0, 0.8);
+	}
+	
+	/* Number text (1/3 etc) */
+	.numbertext {
+	  color: #f2f2f2;
+	  font-size: 12px;
+	  padding: 8px 12px;
+	  position: absolute;
+	  top: 0;
+	}
+	
+	/* Container for image text */
+	.caption-container {
+	  text-align: center;
+	  background-color: #222;
+	  padding: 2px 16px;
+	  color: white;
+	}
+	
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+	
+	/* Six columns side by side */
+	.column {
+	  float: left;
+	  width: 16.66%;
+	}
+	
+	/* Add a transparency effect for thumnbail images */
+	.demo {
+	  opacity: 0.6;
+	}
+	
+	.active,
+	.demo:hover {
+	  opacity: 1;
+	}
+</style>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="assets/images/favicon.png" style="width:150px;margin-top:-25px">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="index.html"><b>Beranda</b></a></li>
+                            <li class="scroll-to-section"><a href="cek_jadwal.html" class="active"><b>Cek Jadwal</b></a></li>
+                            <li class="scroll-to-section">
+								<div class="dropdown">
+									<a class="active"><b>Hasil Foto</b></a>
+									<div class="dropdown-content">
+										<a href="couple_gallery.html">Couple</a>
+										<a href="family_gallery.html">Family</a>
+										<a href="group_gallery.html">Group</a>
+										<a href="graduation_gallery.html">Graduation</a>
+										<a href="maternity_gallery.html">Maternity</a>
+										<!-- <a href="nature_gallery.html">Nature</a> -->
+										<a href="passphoto_gallery.html">Pass Foto</a>
+										<a href="prewedding_gallery.html">Pre-Wedding</a>
+										<a href="produk_gallery.html">Produk</a>
+										<a href="birthday_gallery.html">Ulang Tahun</a>
+										<!-- <a href="vacation_gallery.html">Piknik</a> -->
+										<a href="session_gallery.html">Pers. Session</a>
+										<!-- <a href="touring_gallery.html">Touring</a> -->
+										<a href="postwedding_gallery.html">Post Wedding</a>
+										<a href="ootd_gallery.html">Foto OOTD</a>
+										<a href="other_gallery.html">Foto Lain</a>
+									</div>
+								</div>
+							</li>
+                            <li class="scroll-to-section">
+                                <a href="Login.html">
+                                    <b><span>Login</span></b>
+                                </a>
+                            </li>
+                            <li class="scroll-to-section" style="display:none"><div class="main-red-button"><a href="#contact">Contact Now</a></div></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** --> 
+    <div id="cekjadwal" class="check-jadwal section">
+        <div class="container">
+            <div class="row"> 
+				<div class="col-lg-3">
+				</div>
+				<div class="col-lg-6">
+					<div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+						<div class="bg-light p-5" style="border-radius:20px;margin-top:20px">
+							<div class="row" style="margin-top:-30px;margin-left:-25px">
+								<div class="col-md-9">
+									<label for="datePickerInput">Pilih tanggal booking</label><div id="datePickerSrcVal" class="modalPanah modalCustom"></div>
+									<div class="input-group date" id="datePicker">
+										<input id="datePickerInput" Class="form-control text-center">
+										<span class="input-group-addon"><i class="fa-calendar fa"></i></span>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<label for="btnSearch">&nbsp;</label>
+									<button type="button" id="btnSearch" class="btn btn-outline-primary btn-rounded waves-light waves-effect w-md"><i class="fa fa-search"></i> Cari</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+				</div>
+				<!-- <div class="col-lg-7 text-center" style="margin-top:-70px">
+					<div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+						<img src="assets/images/image-bg2.png" alt="team meeting">
+					</div>
+				</div> -->
+			</div>  
+			<div class="row">
+				&nbsp;&nbsp;&nbsp;<br>
+				&nbsp;&nbsp;&nbsp;<br>
+				&nbsp;&nbsp;&nbsp;<br>
+				&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;
+			</div>			
+        </div>
+    </div> 
+    <div id="scheduleModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg"> 
+            <div class="modal-content" style="border-radius:15px">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="btnClose" aria-hidden="true">×</button>
+                    <h5 class="modal-title"><label style="color:#000000; font-size:20px" id="lblDate"></label></h5>
+                </div>
+                <div class="modal-body"> 
+                    <div class="card-box">
+                        <div class="row form-group">
+							<table>
+								<td></td>
+								<td></td>
+								<td><div class="btn-success btn-rounded" style="width:40px;height:40px"></div></td>
+								<td><span><label style="margin-top:13px">AVAILABLE</label></span></td>
+								<td></td>
+								<td></td>
+								<td><div class="btn-danger btn-rounded" style="width:40px;height:40px"></div></td>
+								<td><span><label style="margin-top:13px">NOT AVAILABLE</label></span></td>
+								<td></td>
+								<td></td>
+								<td> 
+									<fieldset>
+										<div class="main-red-button">
+											<a href="booking.html">Booking Sekarang!</a>
+										</div>
+									</fieldset>
+								</td>
+							</table>
+
+                           <!--  <div class="col-md-3 btn-success btn-rounded" style="width:40px;height:40px"></div>
+                            <div class="col-md-3">
+                                <span><label style="margin-top:13px">AVAILABLE</label></span>
+                            </div>
+                            <div class="col-md-3 btn-danger btn-rounded" style="width:40px;height:40px"></div>
+                            <div class="col-md-3">
+                                <span><label style="margin-top:13px">NOT AVAILABLE</label></span>
+								<a href="booking.html">Booking Sekarang!</a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <div class="row">
+                            <div class="col-3">
+                                <!-- <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus7" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label style="color:white" id="label7">07 - 08</label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus8" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label8" style="color:white">08 - 09</label></b></div>
+                                </div> -->
+                                <div class="row form-group" style="display: none;">
+                                    <div class="col-3 btn-rounded ColorStatus9" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label9" style="color:white">09 - 10</label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus10" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label10" style="color:white">10 - 11</label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus11" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label11" style="color:white">11 - 12</label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus12" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label12" style="color:white">12 - 13</label></b></div>
+                                </div>
+                            </div>
+                            <div class="col-3"> 
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus13" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label13" style="color:white">13 - 14</label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus14" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label14" style="color:white">14 - 15 </label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus15" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label15" style="color:white">15 - 16</label></b></div>
+                                </div>
+                            </div>
+							<div class="col-3"> 
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus16" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label16" style="color:white">16 - 17 </label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus17" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label17" style="color:white">17 - 18 </label></b></div>
+                                </div> 
+								<div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus18" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label18" style="color:white">18 - 19 </label></b></div>
+                                </div>
+                            </div>
+                            <div class="col-3"> 
+								<div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus19" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label19" style="color:white">19 - 20 </label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus20" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label20" style="color:white">20 - 21</label></b></div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 btn-rounded ColorStatus21" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label21" style="color:white">21 - 22</label></b></div>
+                                </div>
+                                <div class="row form-group" style="display: none;">
+                                    <div class="col-3 btn-rounded ColorStatus22" style="width:40px;height:40px"></div>
+                                    <div class="col-9 btn-secondary balokBox"><b><label id="label22" style="color:white">22 - 23</label></b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <footer>
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12" data-wow-duration="1s" data-wow-delay="0.25s" style="margin-top:20px">
+                     <div class="row">
+						<div class="col-md-4 mb-3"> 
+							<h4 style="font-size:14px">Lokasi<h4>
+							<p class="mb-2 text-left">
+							<i class="mdi mdi-map-marker"></i>
+								Curug RT.01/RW.05, Gunung Sindur, Bogor
+								<br> Jawa Barat 16340, Indonesia
+								<br><a href="https://maps.app.goo.gl/jSfLzUAWHytdu7Nt7">Cek Google Map</a>
+							</p>
+						</div>
+						<div class="col-md-4 mb-3"> 
+							<h4 style="font-size:14px">Kontak WA<h4>
+							<p class="mb-2 text-left">Silahkan hubungi kami : <br /><span><img src="vendor/assets/images/wa.png" alt="" style="width:20px"><a href="http://api.whatsapp.com/send?phone=6282310295366"> +62 823-1029-5366</a></span></p> 
+							<p class="mb-2 text-left">
+								<img src="vendor/assets/images/instagram.png" alt="" style="width:20px"> perintisstudio
+								&nbsp&nbsp&nbsp<img src="vendor/assets/images/tiktok.png" alt="" style="width:20px"> perintisstudio
+							</p> 
+						</div>
+						<div class="col-md-4 mb-3"> 
+							<h4 style="font-size:14px">Business Hours<h4>
+							<p class="mb-2 text-left">Setiap Hari Pkl. 10.00 - 22.00 WIB</p>							
+						</div>
+					 </div>
+                </div>
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                    <p>
+                        © Copyright 2023 Perintis Studio. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+	
+	
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+		import { getDatabase, ref, set, get, onValue  } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+			apiKey: "AIzaSyC8HMmGwzHeRMI5L-BD3DgSW1TOJq8Rm9Y",
+			authDomain: "perintisstudio-cff0f.firebaseapp.com",
+			databaseURL: "https://perintisstudio-cff0f-default-rtdb.firebaseio.com",
+			projectId: "perintisstudio-cff0f",
+			storageBucket: "perintisstudio-cff0f.appspot.com",
+			messagingSenderId: "868904587169",
+			appId: "1:868904587169:web:122e59af2e4b1391ac45e0",
+			measurementId: "G-ZWJ47L64CQ"
+		};
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);	
+		const database = getDatabase(app);
+		 
+		$("#btnSearch").click(function () {  
+			 // set validation
+			if ($('#datePickerInput').val() == null || $('#datePickerInput').val() == '') {
+				$("#datePickerSrcVal").show();
+				$("#datePickerSrcVal").html("This field is required.");
+				return;
+			}
+			else
+			{
+				swal({
+					title: 'Konfirmasi',
+					text: "Anda yakin ingin melanjutkan?",
+					type: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#4fa7f3',
+					cancelButtonColor: '#d57171',
+					confirmButtonText: 'OK'
+				}).then(function () {  
+				
+					//let element7 = document.getElementsByClassName('ColorStatus7')[0];
+					//let element8 = document.getElementsByClassName('ColorStatus8')[0];
+					let element9 = document.getElementsByClassName('ColorStatus9')[0];
+					let element10 = document.getElementsByClassName('ColorStatus10')[0];
+					let element11 = document.getElementsByClassName('ColorStatus11')[0];
+					let element12 = document.getElementsByClassName('ColorStatus12')[0];
+					let element13 = document.getElementsByClassName('ColorStatus13')[0];
+					let element14 = document.getElementsByClassName('ColorStatus14')[0];
+					let element15 = document.getElementsByClassName('ColorStatus15')[0];
+					let element16 = document.getElementsByClassName('ColorStatus16')[0];
+					let element17 = document.getElementsByClassName('ColorStatus17')[0];
+					let element18 = document.getElementsByClassName('ColorStatus18')[0];
+					let element19 = document.getElementsByClassName('ColorStatus19')[0];
+					let element20 = document.getElementsByClassName('ColorStatus20')[0];
+					let element21 = document.getElementsByClassName('ColorStatus21')[0];
+					let element22 = document.getElementsByClassName('ColorStatus22')[0];
+					 
+					var x = 1;  
+					var pluginArrayArg = [];
+					const dbRef = ref(database, '/Booking');
+			
+					onValue(dbRef, (snapshot) => {
+					  snapshot.forEach((childSnapshot) => { 
+						const childKey = childSnapshot.key;
+						const childData = childSnapshot.val(); 
+						
+						pluginArrayArg.push({
+							name: childData.Name, 
+							id: childData.Id, 
+							phoneNumber: 
+							childData.PhoneNumber, 
+							numberofPerson: childData.NumberofPerson,
+							numberofClothes:childData.NumberofClothes, 
+							theme: childData.Theme, 
+							additionalNote: childData.AdditionalNote, 
+							bookingTime: childData.BookingTime,
+							bookingDate:childData.BookingDate, 
+							bookingFee:childData.BookingFee, 
+							isPaid: childData.IsPaid, 
+							isDeleted: childData.IsDeleted,
+							duration: childData.Duration
+						}); 
+						x++
+					  });
+					  
+						const dt = $('#datePickerInput').val(); 
+						var filterArr = pluginArrayArg.filter(function(obj) {
+							return obj.isDeleted == false && obj.bookingDate == moment(dt).format('YYYY/MM/DD');
+						});  
+						  
+						var jsonArray = JSON.parse(JSON.stringify(filterArr))
+					  
+						const d = new Date($('#datePickerInput').val())
+						var substring = moment(d).format('dddd, D MMMM YYYY');
+						var subStringArr = substring.split(', ');
+						var day = subStringArr[0];
+						var dayBahasa= "";
+						
+						if (day == "Sunday"){
+							dayBahasa = "Minggu";
+						}
+						else if (day == "Monday"){
+							dayBahasa = "Senin";
+						}else if (day == "Tuesday"){
+							dayBahasa = "Selasa";
+						}else if (day == "Wednesday"){
+							dayBahasa = "Rabu";
+						}else if (day == "Thursday"){
+							dayBahasa = "Kamis";
+						}else if (day == "Friday"){
+							dayBahasa = "Jumat";
+						}else{
+							dayBahasa = "Sabtu";
+						} 
+									
+						var datetime = dayBahasa +", "+ moment(d).format('D MMMM YYYY'); 
+					    $("#lblDate").html(datetime);  
+						if (jsonArray != null)
+						{     					
+							var Count = filterArr.length; 
+							var rangeHour = "";
+							var rangeHourAction = []; 
+							var name = [];
+							// add interval duration
+							var n = 0;
+							for (var i = 0; i < Count; i++) { 
+								var countDuration = parseInt(filterArr[i].duration); 
+								var hourInterval = parseInt(filterArr[i].bookingTime);
+								for (var z = 0; z < countDuration; z++){  
+									n = 1;										
+									var endRange = parseInt(hourInterval) + n;
+									rangeHour = hourInterval + " - " + endRange;	
+									hourInterval = hourInterval + n;
+									
+									// if (rangeHour == "7 - 8")
+									// {
+									// 	$("#label7").html(filterArr[i].name);
+									// 	element7.classList.add("btn-danger");
+									// }
+									// else {
+									// 	element7.classList.add("btn-success");
+									// }
+									
+									// if (rangeHour == "8 - 9")
+									// {
+									// 	$("#label8").html(filterArr[i].name);
+									// 	element8.classList.add("btn-danger");
+									// } else {
+									// 	element8.classList.add("btn-success");
+									// }
+									
+									if (rangeHour == "9 - 10")
+									{
+										$("#label9").html(filterArr[i].name);
+										element9.classList.add("btn-danger");
+									} else {
+										element9.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "10 - 11")
+									{
+										$("#label10").html(filterArr[i].name);
+										element10.classList.add("btn-danger");
+									} else {
+										element10.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "11 - 12")
+									{
+										$("#label11").html(filterArr[i].name);
+										element11.classList.add("btn-danger");
+									} else {
+										element11.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "12 - 13")
+									{
+										$("#label12").html(filterArr[i].name);
+										element12.classList.add("btn-danger");
+									} else {
+										element12.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "13 - 14")
+									{
+										$("#label13").html(filterArr[i].name);
+										element13.classList.add("btn-danger");
+									} else {
+										element13.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "13 - 14")
+									{
+										$("#label13").html(filterArr[i].name);
+										element13.classList.add("btn-danger");
+									} else {
+										element13.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "14 - 15")
+									{
+										$("#label14").html(filterArr[i].name);
+										element14.classList.add("btn-danger");
+									} else {
+										element14.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "15 - 16")
+									{
+										$("#label15").html(filterArr[i].name);
+										element15.classList.add("btn-danger");
+									} else {
+										element15.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "16 - 17")
+									{
+										$("#label16").html(filterArr[i].name);
+										element16.classList.add("btn-danger");
+									} else {
+										element16.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "17 - 18")
+									{
+										$("#label17").html(filterArr[i].name);
+										element17.classList.add("btn-danger");
+									} else {
+										element17.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "18 - 19")
+									{
+										$("#label18").html(filterArr[i].name);
+										element18.classList.add("btn-danger");
+									} else {
+										element18.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "19 - 20")
+									{
+										$("#label19").html(filterArr[i].name);
+										element19.classList.add("btn-danger");
+									} else {
+										element19.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "20 - 21")
+									{
+										$("#label20").html(filterArr[i].name);
+										element20.classList.add("btn-danger");
+									} else {
+										element20.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "21 - 22")
+									{
+										$("#label21").html(filterArr[i].name);
+										element21.classList.add("btn-danger");
+									} else {
+										element21.classList.add("btn-success");
+									}
+									
+									if (rangeHour == "22 - 23")
+									{
+										$("#label22").html(filterArr[i].name);
+										element22.classList.add("btn-danger");
+									} else {
+										element22.classList.add("btn-success");
+									}
+								}									
+								n = 0;  
+							} 
+							
+							
+							console.log(rangeHour);
+							$("#scheduleModal").modal('show');
+						}
+						 
+					},{
+					  onlyOnce: true
+					});  
+					
+				});
+			}
+		});
+	</script>
+	
+    <!-- Scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/assets/js/owl-carousel.js"></script>
+    <script src="vendor/assets/js/animation.js"></script>
+    <script src="vendor/assets/js/imagesloaded.js"></script>
+    <script src="vendor/assets/js/templatemo-custom.js"></script>
+
+    <!-- jQuery  -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/jquery.slimscroll.js"></script>
+
+    <!-- Required datatable js -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="plugins/datatables/jszip.min.js"></script>
+    <script src="plugins/datatables/pdfmake.min.js"></script>
+    <script src="plugins/datatables/vfs_fonts.js"></script>
+    <script src="plugins/datatables/buttons.html5.min.js"></script>
+    <script src="plugins/datatables/buttons.print.min.js"></script>
+
+    <!-- Responsive examples -->
+    <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    <!-- Jquery-Ui -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/moment.min.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/collapse.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/transition.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Sweet Alert Js  -->
+    <script src="plugins/sweet-alert/sweetalert2.min.js"></script>
+
+    <!-- Toastr js -->
+    <script src="plugins/jquery-toastr/jquery.toast.min.js" type="text/javascript"></script>
+
+    <!-- Modal-Effect -->
+    <script src="plugins/custombox/js/custombox.min.js"></script>
+    <script src="plugins/custombox/js/legacy.min.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/jquery.core.js"></script>
+    <script src="assets/js/jquery.app.js"></script>
+
+    <script src="scripts/index.js"></script>
+    <script src="scripts/common.js"></script>
+
+	<script>
+		let slideIndex = 1;
+		showSlides(slideIndex);
+	  
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+	  
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+	  
+		function showSlides(n) {
+		  let i;
+		  let slides = document.getElementsByClassName("mySlides");
+		  let dots = document.getElementsByClassName("demo");
+		  let captionText = document.getElementById("caption");
+		  if (n > slides.length) {slideIndex = 1}
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		  }
+		  for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";
+		  dots[slideIndex-1].className += " active";
+		  captionText.innerHTML = dots[slideIndex-1].alt;
+		}
+	  </script>
+
+</body>
+</html>

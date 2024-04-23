@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?vacation=Poppins:wght@100;200;300;400;500;600;700;1000;900&display=swap" rel="stylesheet">
+
+    <title>Perintis Studio - Official Website</title>
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+
+    <!--calendar css-->
+    <link href="plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet" />
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Date Picker -->
+    <link href="plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="plugins/glyphicons/glyphicon-bootstrap.css" rel="stylesheet" />
+
+    <!-- Toastr css -->
+    <link href="plugins/jquery-toastr/jquery.toast.min.css" rel="stylesheet" />
+
+    <!-- Sweet Alert css -->
+    <link href="plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="assets/js/modernizr.min.js"></script>
+
+    <!-- DataTables -->
+    <link href="plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Responsive datatable -->
+    <link href="plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Custom box css -->
+    <link href="plugins/custombox/css/custombox.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="vendor/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="vendor/assets/css/templatemo-space-dynamic.css">
+    <link rel="stylesheet" href="vendor/assets/css/animated.css">
+    <link rel="stylesheet" href="vendor/assets/css/owl.css">
+    <!--
+
+    TemplateMo 562 Space Dynamic
+
+    https://templatemo.com/tm-562-space-dynamic
+
+    -->
+
+    <style>
+        .balokBox {
+            width: 120px;
+            height: 25px;
+            border-radius: 10px;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style> 
+
+<style>
+	body {
+	  font-family: Arial;
+	  margin: 0;
+	}
+	
+	* {
+	  box-sizing: border-box;
+	}
+	
+	img {
+	  vertical-align: middle;
+	}
+	
+	/* Position the image container (needed to position the left and right arrows) */
+	.container {
+	  position: relative;
+	}
+	
+	/* Hide the images by default */
+	.mySlides {
+	  display: none;
+	  text-align: center;
+	}
+	
+	/* Add a pointer when hovering over the thumbnail images */
+	.cursor {
+	  cursor: pointer;
+	}
+	
+	/* Next & previous buttons */
+	.prev,
+	.next {
+		cursor: pointer;
+		position: absolute;
+		top: 40%;
+		width: auto;
+		padding: 16px;
+		margin-top: -50px;
+		color: white;
+		font-weight: bold;
+		font-size: 20px;
+		border-radius: 0 3px 3px 0;
+		user-select: none;
+		-webkit-user-select: none;
+		}
+	
+	/* Position the "next button" to the right */
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+	
+	/* On hover, add a black background color with a little bit see-through */
+	.prev:hover,
+	.next:hover {
+	  background-color: rgba(0, 0, 0, 0.8);
+	}
+	
+	/* Number text (1/3 etc) */
+	.numbertext {
+	  color: #f2f2f2;
+	  font-size: 12px;
+	  padding: 12px 12px;
+	  position: absolute;
+	  top: 0;
+	}
+	
+	/* Container for image text */
+	.caption-container {
+	  text-align: center;
+	  background-color: #222;
+	  padding: 2px 16px;
+	  color: white;
+	}
+	
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+	
+	/* Six columns side by side */
+	.column {
+	  float: left;
+	  width: 16.66%;
+	}
+	
+	/* Add a transparency effect for thumnbail images */
+	.demo {
+	  opacity: 0.6;
+	}
+	
+	.active,
+	.demo:hover {
+	  opacity: 1;
+	}
+</style>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="assets/images/favicon.png" style="width:150px;margin-top:-25px">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="index.html"><b>Beranda</b></a></li>
+                            <li class="scroll-to-section"><a href="cek_jadwal.html"><b>Cek Jadwal</b></a></li>
+                            <li class="scroll-to-section">
+								<div class="dropdown">
+									<a class="active"><b>Hasil Foto</b></a>
+									<div class="dropdown-content">
+										<a href="couple_gallery.html">Couple</a>
+										<a href="family_gallery.html">Family</a>
+										<a href="group_gallery.html">Group</a>
+										<a href="graduation_gallery.html">Graduation</a>
+										<a href="maternity_gallery.html">Maternity</a>
+										<!-- <a href="nature_gallery.html">Nature</a> -->
+										<a href="passphoto_gallery.html">Pass Foto</a>
+										<a href="prewedding_gallery.html">Pre-Wedding</a>
+										<a href="produk_gallery.html">Produk</a>
+										<a href="birthday_gallery.html">Ulang Tahun</a>
+										<!-- <a href="vacation_gallery.html">Piknik</a> -->
+										<a href="session_gallery.html">Pers. Session</a>
+										<!-- <a href="touring_gallery.html">Touring</a> -->
+										<a href="postwedding_gallery.html">Post Wedding</a>
+										<a href="ootd_gallery.html">Foto OOTD</a>
+										<a href="other_gallery.html">Foto Lain</a>
+									</div>
+								</div>
+							</li>
+                            <li class="scroll-to-section">
+                                <a href="Login.html">
+                                    <b><span>Login</span></b>
+                                </a>
+                            </li>
+                            <li class="scroll-to-section" style="display:none"><div class="main-red-button"><a href="#contact">Contact Now</a></div></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->  
+	<div id="hasilfoto" class="contact-us section">
+		<div class="container" style="margin-top:-50px">
+			<!-- <div class="section-heading wow fadeInLeft text-center">
+				<h2 style="text-align:center">Maternity Gallery</h2>
+			</div> -->
+			<div class="mySlides">
+			  <div class="numbertext">1 / 12</div>
+			  <img src="assets/images/no-image.jpeg" id="image_vacation1" alt="" style="width:80%">
+			</div>
+		  
+			<div class="mySlides">
+			  <div class="numbertext">2 / 12</div>
+			  <img src="assets/images/no-image.jpeg" id="image_vacation2" alt="" style="width:80%">
+			</div>
+		  
+			<div class="mySlides">
+			  <div class="numbertext">3 / 12</div>
+			  <img src="assets/images/no-image.jpeg" id="image_vacation3" alt="" style="width:80%">
+			</div>
+			  
+			<div class="mySlides">
+			  <div class="numbertext">4 / 12</div>
+			  <img src="assets/images/no-image.jpeg" id="image_vacation4" alt="" style="width:80%">
+			</div>
+		  
+			<div class="mySlides">
+			  <div class="numbertext">5 / 12</div>
+			  <img src="assets/images/no-image.jpeg" id="image_vacation5" alt=""style="width:80%">
+			</div>
+			  
+			<div class="mySlides">
+			  <div class="numbertext">6 / 12</div>
+			  <img src="assets/images/no-image.jpeg" id="image_vacation6" alt="" style="width:80%">
+			</div>
+
+			<div class="mySlides">
+				<div class="numbertext">7 / 12</div>
+				<img src="assets/images/no-image.jpeg" id="image_vacation7" alt="" style="width:80%">
+			</div>
+			
+			<div class="mySlides">
+				<div class="numbertext">8 / 12</div>
+				<img src="assets/images/no-image.jpeg" id="image_vacation8" alt="" style="width:80%">
+			</div>
+			
+			<div class="mySlides">
+				<div class="numbertext">9 / 12</div>
+				<img src="assets/images/no-image.jpeg" id="image_vacation9" alt="" style="width:80%">
+			</div>
+				
+			<div class="mySlides">
+				<div class="numbertext">10 / 12</div>
+				<img src="assets/images/no-image.jpeg" id="image_vacation10" alt="" style="width:80%">
+			</div>
+			
+			<div class="mySlides">
+				<div class="numbertext">11 / 12</div>
+				<img src="assets/images/no-image.jpeg" id="image_vacation11" alt=""style="width:80%">
+			</div>
+			
+			<div class="mySlides">
+				<div class="numbertext">12 / 12</div>
+				<img src="assets/images/no-image.jpeg" id="image_vacation12" alt="" style="width:80%">
+			</div>
+			  
+			<a class="prev" onclick="plusSlides(-1)">❮</a>
+			<a class="next" onclick="plusSlides(1)">❯</a>
+		  
+			<div class="caption-container">
+			  <p id="caption" style="color:#f2f2f2;"></p>
+			</div>
+		  
+			<div class="row">
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation1_1" alt="Group Gallery" style="width:100%" onclick="currentSlide(1)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation22" alt="Group Gallery"  style="width:100%" onclick="currentSlide(2)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation33" alt="Group Gallery"  style="width:100%" onclick="currentSlide(3)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation44" alt="Group Gallery"  style="width:100%" onclick="currentSlide(4)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation55" alt="Group Gallery"  style="width:100%" onclick="currentSlide(5)">
+			  </div>    
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation66" alt="Group Gallery"  style="width:100%" onclick="currentSlide(6)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation77" alt="Group Gallery" style="width:100%" onclick="currentSlide(7)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation88" alt="Group Gallery"  style="width:100%" onclick="currentSlide(8)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation99" alt="Group Gallery"  style="width:100%" onclick="currentSlide(9)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation1010" alt="Group Gallery"  style="width:100%" onclick="currentSlide(10)">
+			  </div>
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation1111" alt="Group Gallery"  style="width:100%" onclick="currentSlide(11)">
+			  </div>    
+			  <div class="column right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+				<img class="demo cursor" src="assets/images/no-image.jpeg" id="image_vacation1212" alt="Group Gallery"  style="width:100%" onclick="currentSlide(12)">
+			  </div>
+			</div>
+		</div>
+
+	</div>
+    <footer>
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12" data-wow-duration="1s" data-wow-delay="0.25s" style="margin-top:20px">
+                     <div class="row">
+						<div class="col-md-4 mb-3"> 
+							<h4 style="font-size:14px">Lokasi<h4>
+							<p class="mb-2 text-left">
+							<i class="mdi mdi-map-marker"></i>
+								Curug RT.01/RW.05, Gunung Sindur, Bogor
+								<br> Jawa Barat 16340, Indonesia
+								<br><a href="https://maps.app.goo.gl/jSfLzUAWHytdu7Nt7">Cek Google Map</a>
+							</p>
+						</div>
+						<div class="col-md-4 mb-3"> 
+							<h4 style="font-size:14px">Kontak WA<h4>
+							<p class="mb-2 text-left">Silahkan hubungi kami : <br /><span><img src="vendor/assets/images/wa.png" alt="Maternity Gallery" style="width:20px"><a href="http://api.whatsapp.com/send?phone=6282310295366"> +62 823-1029-5366</a></span></p> 
+							<p class="mb-2 text-left">
+								<img src="vendor/assets/images/instagram.png" alt="Maternity Gallery" style="width:20px"> perintisstudio
+								&nbsp&nbsp&nbsp<img src="vendor/assets/images/tiktok.png" alt="Maternity Gallery" style="width:20px"> perintisstudio
+							</p> 
+						</div>
+						<div class="col-md-4 mb-3"> 
+							<h4 style="font-size:14px">Business Hours<h4>
+							<p class="mb-2 text-left">Setiap Hari Pkl. 10.00 - 22.00 WIB</p>							
+						</div>
+					 </div>
+                </div>
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                    <p>
+                        © Copyright 2023 Perintis Studio. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+	
+	
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+		import { getDatabase, ref, set, get, onValue  } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		const firebaseConfig = {
+			apiKey: "AIzaSyC8HMmGwzHeRMI5L-BD3DgSW1TOJq8Rm9Y",
+			authDomain: "perintisstudio-cff0f.firebaseapp.com",
+			databaseURL: "https://perintisstudio-cff0f-default-rtdb.firebaseio.com",
+			projectId: "perintisstudio-cff0f",
+			storageBucket: "perintisstudio-cff0f.appspot.com",
+			messagingSenderId: "868904587169",
+			appId: "1:868904587169:web:122e59af2e4b1391ac45e0",
+			measurementId: "G-ZWJ47L64CQ"
+		};
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const analytics = getAnalytics(app);	
+		const database = getDatabase(app);
+		  
+		RetrieveDataVacation();
+  
+		function RetrieveDataVacation(){ 
+			const starCountCouple = ref(database, 'Images/Group');
+			onValue(starCountCouple, (snapshot) => { 
+				const data = snapshot.val();     
+				if (data != null)
+				{ 
+					if (data.Image1 != '')
+					{ 
+						$("#image_vacation1").attr("src", data.Image1);
+						$("#image_vacation1_1").attr("src", data.Image1);
+					}
+					else{
+						$("#image_vacation1").attr("src", "assets/images/no-image.jpeg"); 
+					}
+
+					if (data.Image2 != '')
+					{
+						$("#image_vacation2").attr("src", data.Image2); 
+						$("#image_vacation22").attr("src", data.Image2); 
+					}
+					else{
+						$("#image_vacation2").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image3 != '')
+					{
+						$("#image_vacation3").attr("src", data.Image3);
+						$("#image_vacation33").attr("src", data.Image3);
+					}else{
+						$("#image_vacation3").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image4 != '')
+					{
+						$("#image_vacation4").attr("src", data.Image4);
+						$("#image_vacation44").attr("src", data.Image4);
+					}else{
+						$("#image_vacation4").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image5 != '')
+					{
+						$("#image_vacation5").attr("src", data.Image5);
+						$("#image_vacation55").attr("src", data.Image5);
+					}else{
+						$("#image_vacation5").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image6 != '')
+					{
+						$("#image_vacation6").attr("src", data.Image6);
+						$("#image_vacation66").attr("src", data.Image6);
+					}else{
+						$("#image_vacation6").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image7 != '')
+					{
+						$("#image_vacation7").attr("src", data.Image7);
+						$("#image_vacation77").attr("src", data.Image7);
+					}else{
+						$("#image_vacation7").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image8 != '')
+					{
+						$("#image_vacation8").attr("src", data.Image8);
+						$("#image_vacation88").attr("src", data.Image8);
+					}else{
+						$("#image_vacation8").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image9 != '')
+					{
+						$("#image_vacation9").attr("src", data.Image9);
+						$("#image_vacation99").attr("src", data.Image9);
+					}else{
+						$("#image_vacation9").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image10 != '')
+					{
+						$("#image_vacation10").attr("src", data.Image10);
+						$("#image_vacation1010").attr("src", data.Image10);
+					}else{
+						$("#image_vacation10").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image11 != '')
+					{
+						$("#image_vacation11").attr("src", data.Image11);
+						$("#image_vacation1111").attr("src", data.Image11);
+					}else{
+						$("#image_vacation11").attr("src", "assets/images/no-image.jpeg");
+					}
+
+					if (data.Image12 != '')
+					{
+						$("#image_vacation12").attr("src", data.Image12);
+						$("#image_vacation1212").attr("src", data.Image12);
+					}else{
+						$("#image_vacation12").attr("src", "assets/images/no-image.jpeg");
+					}  
+				}                    
+			});
+		}
+ 
+	</script>
+	
+    <!-- Scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/assets/js/owl-carousel.js"></script>
+    <script src="vendor/assets/js/animation.js"></script>
+    <script src="vendor/assets/js/imagesloaded.js"></script>
+    <script src="vendor/assets/js/templatemo-custom.js"></script>
+
+    <!-- jQuery  -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/jquery.slimscroll.js"></script>
+
+    <!-- Required datatable js -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="plugins/datatables/jszip.min.js"></script>
+    <script src="plugins/datatables/pdfmake.min.js"></script>
+    <script src="plugins/datatables/vfs_fonts.js"></script>
+    <script src="plugins/datatables/buttons.html5.min.js"></script>
+    <script src="plugins/datatables/buttons.print.min.js"></script>
+
+    <!-- Responsive examples -->
+    <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    <!-- Jquery-Ui -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/moment.min.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/collapse.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/transition.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Sweet Alert Js  -->
+    <script src="plugins/sweet-alert/sweetalert2.min.js"></script>
+
+    <!-- Toastr js -->
+    <script src="plugins/jquery-toastr/jquery.toast.min.js" type="text/javascript"></script>
+
+    <!-- Modal-Effect -->
+    <script src="plugins/custombox/js/custombox.min.js"></script>
+    <script src="plugins/custombox/js/legacy.min.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/jquery.core.js"></script>
+    <script src="assets/js/jquery.app.js"></script>
+
+    <script src="scripts/index.js"></script>
+    <script src="scripts/common.js"></script>
+
+	<script>
+		let slideIndex = 1;
+		showSlides(slideIndex);
+	  
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+	  
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+	  
+		function showSlides(n) {
+		  let i;
+		  let slides = document.getElementsByClassName("mySlides");
+		  let dots = document.getElementsByClassName("demo");
+		  let captionText = document.getElementById("caption");
+		  if (n > slides.length) {slideIndex = 1}
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		  }
+		  for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";
+		  dots[slideIndex-1].className += " active";
+		  captionText.innerHTML = dots[slideIndex-1].alt;
+		}
+	  </script>
+
+</body>
+</html>

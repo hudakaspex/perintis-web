@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Perintis Studio - Official Website</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.png"> 
+        
+        <!-- daterange App css -->
+        <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+        <link href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+        <link href="plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <!-- Plugins css-->
+        <link href="plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link href="plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
+        <link href="plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+        <!-- Bootstrap fileupload css -->
+	    <link href="plugins/bootstrap-fileupload/bootstrap-fileupload.css" rel="stylesheet" />
+
+        <!-- Date Picker -->
+        <link href="plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+        <link href="plugins/glyphicons/glyphicon-bootstrap.css" rel="stylesheet" />
+
+        <!-- Toastr css -->
+        <link href="plugins/jquery-toastr/jquery.toast.min.css" rel="stylesheet" />
+
+        <!-- Sweet Alert css -->
+        <link href="plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+        <script src="assets/js/modernizr.min.js"></script>
+
+        <!-- DataTables -->
+        <link href="plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <script src="assets/js/modernizr.min.js"></script>
+
+    </head>
+
+    <body>
+
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main" style="background-color:whitesmoke;">
+                <div class="container-fluid">
+
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <!-- Text Logo -->
+                        <!--<a href="index.html" class="logo">-->
+                            <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                            <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Abstack</span>-->
+                        <!--</a>-->
+                        <!-- Image Logo -->
+                        <a href="https://perintisstudio.com/" class="logo">
+                            <img src="assets/images/favicon.png" alt="" height="80" class="logo-large">
+                            <img src="assets/images/favicon.png" alt="" height="40" class="logo-small">
+                        </a>
+
+                    </div>
+                    <!-- End Logo container-->
+
+
+                    <div class="menu-extras topbar-custom">
+
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                            <li class="menu-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle nav-link">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>    
+                        </ul>
+                    </div>
+                    <!-- end menu-extras -->
+
+                    <div class="clearfix"></div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+            <div class="navbar-custom">
+                <div class="container-fluid">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+
+                            <li class="has-submenu">
+                                <a href="booking_list.html"><i class="fi-air-play"></i>Booking list</a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="upload_image.html"><i class="fi-briefcase"></i>Upload Image</a> 
+                            </li>    
+
+                            
+                        </ul>
+                        <!-- End navigation menu -->
+                    </div> <!-- end #navigation -->
+                </div> <!-- end container -->
+            </div> <!-- end navbar-custom -->
+        </header>
+        <!-- End Navigation Bar-->
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box"> 
+                            <h4 class="page-title"></h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title end breadcrumb -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+                            <h4 class="m-t-0 header-title"><b>Booking List</b></h4>
+                            <p class="text-muted font-14 m-b-30">
+                                Data booking yang sudah terdaftar
+                            </p>
+                            <div class="row">
+                                <div class="col-md-3" style="margin-left: 45px;">
+                                    <label>Pilih Tanggal Booking</label>
+                                    <div>
+                                        <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateRangePick" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="btnSearch">&nbsp;</label><br />
+                                    <button type="button" class="btn btn-outline-primary btn-rounded waves-light waves-effect w-md" id="btnSearch"><i class="fa fa-search"></i> Cari</button>
+                                </div> 
+                                <div class="col-md-12" style="margin-top:20px">
+                                    <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" data-mobile-responsive="true">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th width="150px">Kode Booking</th>
+                                                <th width="200px">Nama</th>
+                                                <th width="100px">HP</th>
+                                                <th width="80px">Jumlah Orang</th>
+                                                <th width="80px">Jumlah Tema Baju</th>
+                                                <th width="150px">Tema</th>
+                                                <th width="200px">Note</th>
+                                                <th width="200px">Jam & Tanggal Booking</th>
+                                                <th width="100px">Durasi (Jam)</th>
+                                                <th width="100px">Biaya Booking (Rp)</th>
+                                                <th width="200px">Bukti Transfer</th>
+                                                <th width="210px">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Signup modal content -->
+                    <div id="addEditModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="border-radius:15px">
+                                <div class="modal-body">
+                                    <div class="modal-header mb-2" style="background: linear-gradient(to top, #B5B5B5,#000000);">
+                                        <h4 class="modal-title">
+                                            <label id="lblModalTitle" class="page-title float-left" style="color:#ffffff"></label>
+                                        </h4>
+                                    </div>
+                                    <form class="form-horizontal" action="#">
+                                        <div class="row form-group m-b-25">
+                                            <div class="col-12">
+                                                <label class="col-form-label">Jumlah DP :</label>
+                                                <input class="form-control autonumber" type="text" id="DPInput" maxlenght="20" onkeypress='return $.common.isNumberKey(event)' style="text-align:right" data-a-sep="." data-a-dec=",">
+                                                <span class="font-14 text-muted">e.g. "1.234.567.890.123"</span>
+                                            </div>
+                                            <div class="col-12" style="display:none">
+                                                <label class="col-form-label">Jumlah biaya pelunasan :</label><small class="text-danger"><span> *</span></small><div id="paidOffVal" class="modalPanah modalCustom"></div>
+                                                <input class="form-control" type="text" id="paidOffInput" maxlenght="20" onkeypress='return $.common.isNumberKey(event)' style="text-align:right">
+                                            </div>
+                                            <div class="col-12" style="display:none">
+                                                <label class="col-form-label">Lunas &nbsp;&nbsp;</label>
+                                                <input type="checkbox" runat="server" class='js-switch-form' id="chkLunas" data-color="#000000" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group account-btn text-right m-t-10">
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-outline-primary btn-rounded waves-light waves-effect w-md" id="btnSave">Simpan</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-rounded waves-light waves-effect w-md" data-dismiss="modal">Batal</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    <!-- Signup modal content -->
+                    <div id="DeleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="border-radius:15px">
+                                <div class="modal-body">
+                                    <div class="modal-header mb-2" style="background: linear-gradient(to top, #B5B5B5,#000000);">
+                                        <h4 class="modal-title">
+                                            <label id="lblModalDeleteTitle" class="page-title float-left" style="color:#ffffff">Anda yakin akan menghapus data&nbsp </label><label id="lblBookedName" class="page-title float-left" style="color:#ffffff"></label>
+                                        </h4>
+                                    </div>
+                                    <form class="form-horizontal" action="#">
+                                            <div class="row form-group m-b-25">
+                                                <div class="col-12 text-center">
+                                                    <label class="col-form-label">Data yang sudah dihapus tidak bisa dikembalikan lagi.</label> 
+                                                </div>
+                                            </div>
+                                        </div>								
+                                        <div class="form-group account-btn text-right m-t-10">
+                                            <div class="col-12"> 
+                                                <button type="button" class="btn btn-outline-danger btn-rounded waves-light waves-effect w-md" id="btnConfirmDelete">Konfirmasi</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-rounded waves-light waves-effect w-md" data-dismiss="modal">Batal</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    <div id="loaderModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="mask">
+                            <div class="mask-inner">
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />  
+                                <br />
+                                <br />
+                                <div class="loader" style="text-align:center">
+                                    <img src="assets/images/loader.gif" width="80px" alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end row -->
+
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        2024 © Perintis Studio
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+
+        <!-- Required datatable js -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="plugins/datatables/jszip.min.js"></script>
+        <script src="plugins/datatables/pdfmake.min.js"></script>
+        <script src="plugins/datatables/vfs_fonts.js"></script>
+        <script src="plugins/datatables/buttons.html5.min.js"></script>
+        <script src="plugins/datatables/buttons.print.min.js"></script>
+        <!-- Responsive examples -->
+        <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+        <!-- Select2 -->
+        <!-- <script src="plugins/switchery/switchery.min.js"></script> -->
+        <script src="plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+        <script src="plugins/select2/js/select2.min.js" type="text/javascript"></script>
+        <script src="plugins/bootstrap-select/js/bootstrap-select.js" type="text/javascript"></script>
+        <script src="plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        <script src="plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+        <script src="plugins/bootstrap-maxlength/bootstrap-maxlength.js" type="text/javascript"></script>
+        <script type="text/javascript" src="plugins/bootstrap-datetimepicker/moment.min.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-datetimepicker/collapse.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-datetimepicker/transition.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+        <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/bootstrap-timepicker/bootstrap-timepicker.js"></script>
+        <script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+        <script src="plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+        <script src="plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+         <!-- Init js -->
+        <script src="assets/pages/jquery.form-pickers.init.js"></script>
+
+        <!-- Sweet Alert Js  -->
+        <script src="plugins/sweet-alert/sweetalert2.min.js"></script>
+
+        <!-- Toastr js -->
+        <script src="plugins/jquery-toastr/jquery.toast.min.js" type="text/javascript"></script>
+
+        <script src="plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
+        <script src="plugins/autoNumeric/autoNumeric.js" type="text/javascript"></script>
+
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+        <script type="text/javascript">
+            jQuery(function ($) {
+                $('.autonumber').autoNumeric('init');
+            }); 
+        </script>
+        <script type="module">
+	
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+            import { getDatabase, ref, set, get, onValue  } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"; 
+            
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+    
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyC8HMmGwzHeRMI5L-BD3DgSW1TOJq8Rm9Y",
+                authDomain: "perintisstudio-cff0f.firebaseapp.com",
+                databaseURL: "https://perintisstudio-cff0f-default-rtdb.firebaseio.com",
+                projectId: "perintisstudio-cff0f",
+                storageBucket: "perintisstudio-cff0f.appspot.com",
+                messagingSenderId: "868904587169",
+                appId: "1:868904587169:web:122e59af2e4b1391ac45e0",
+                measurementId: "G-ZWJ47L64CQ"
+            };
+    
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);	
+            const database = getDatabase(app); 
+            
+            GetDatatable();
+            
+            $("#btnSearch").click(function () { 
+                if ($('#dateRangePick').val() == null || $('#dateRangePick').val() == '') {
+                    $("#datePickerSrcVal").show();
+                    $("#datePickerSrcVal").html("This field is required.");
+                    return;
+                } else { 
+                    GetDatatable();
+                }
+            });
+    
+            
+            function GetDatatable(){
+                $("#loaderModal").modal('show');
+                var x = 1;  
+                var pluginArrayArg = [];
+            
+                const dbRef = ref(database, '/Booking');
+                
+                onValue(dbRef, (snapshot) => {
+                  snapshot.forEach((childSnapshot) => { 
+                    const childKey = childSnapshot.key;
+                    const childData = childSnapshot.val(); 
+                    
+                    pluginArrayArg.push({
+                        name: childData.Name, 
+                        id: childData.Id, 
+                        phoneNumber: 
+                        childData.PhoneNumber, 
+                        numberofPerson: childData.NumberofPerson,
+                        numberofClothes:childData.NumberofClothes, 
+                        theme: childData.Theme, additionalNote: 
+                        childData.AdditionalNote, bookingTime: 
+                        childData.BookingTime,
+                        bookingDate:childData.BookingDate, 
+                        bookingFee:childData.BookingFee, 
+                        isPaid: childData.IsPaid, 
+                        isDeleted: childData.IsDeleted,
+                        duration: childData.Duration,
+                        urlImage: childData.UrlImage
+                    }); 
+                    x++
+                  });
+                  
+                  const datearr = $('#dateRangePick').val().split(" - ");
+                  var dt1 = Date.parse(datearr[0]);
+                  var dt2 = Date.parse(datearr[1]);
+                  
+                  var filterArr = pluginArrayArg.filter(function(obj) {
+                    return obj.isDeleted == false && obj.isPaid == true && 
+                    obj.bookingDate >= moment(dt1).format('YYYY/MM/DD') && 
+                    obj.bookingDate <= moment(dt2).format('YYYY/MM/DD');
+                  });  
+                  
+                  var jsonArray = JSON.parse(JSON.stringify(filterArr))
+                  $("#loaderModal").modal('hide');
+                  if ($.fn.DataTable.isDataTable('#datatable-buttons')) {
+                    $('#datatable-buttons').DataTable().destroy();
+                  }
+                  $('#datatable-buttons tbody').empty();
+                  
+                  $('#datatable-buttons').DataTable({
+                    lengthChange: false,
+                    //buttons: ['excel', 'pdf'],
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: 'excel',
+                            exportOptions: {
+                                modifier: {
+                                    page: 'all'
+                                },
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            orientation: 'landscape',
+                            pageSize: 'LEGAL',
+                            exportOptions: {
+                                modifier: {
+                                    page: 'all',
+                                },
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                            }
+                        }
+                    ],
+                    serverSide: false,
+                    deferLoading: 57,
+                    processing: true,
+                    data: jsonArray,
+                    scrollX: true,
+                    scrollY: true,
+                    pageLength: 11,
+                    columns: [
+                        { data: 'id', class: 'row-value-id' },
+                        { data: 'name', class: 'row-value-name' },
+                        { data: 'phoneNumber', class: 'row-value-phonenumber' },
+                        { data: 'numberofPerson', class: 'text-center row-value-numberofperson' },
+    
+                        { data: 'numberofClothes', class: 'text-center row-value-numberofclothes' },
+                        { data: 'theme', class: 'row-value-theme' },
+                        { data: 'additionalNote', class: 'row-value-additionalnote' },
+                        { data: 'DateTime', class: 'text-center row-value-datetime' },
+                        { data: 'duration', class: 'text-center row-value-duration' },
+                        { data: 'bookingFee', class: 'text-right row-value-bookingfee' },
+                        { data: 'image', class: 'text-center'},
+                        { data: 'action' }
+                    ],
+                    columnDefs: [ 
+                        {
+                            defaultContent : "-",
+                            targets : "_all"
+                        },
+                        {
+                            targets: 7,
+                            render: function (data, type, row, meta) {
+                                var d = Date.parse(row.bookingDate);
+                                var appointment = moment(d).format('dddd, D MMMM YYYY') + ", Jam " + row.bookingTime + ":00";
+                                return appointment;
+                            }
+                        },
+                        {
+                            targets:10,
+                            render: function (data, type, row, meta) { 
+                                var src = "";
+                                src = row.urlImage; //localStorage.getItem(row.id);
+                                if (src == null)
+                                {
+                                    src = "assets/images/no-image.jpeg";
+                                } 
+                                return ("<div class='fileupload-new thumbnail'><img src='" + src + "' alt='image' style='width: 120px' /></div>");
+                            }
+                        },
+                        {
+                            targets: 11,
+                            render: function (data, type, row, meta) {
+                                return ("<button type='button' class='btn btn-outline-warning btn-rounded waves-light waves-effect w-md edit-datatable' id='" + row.id + "' onclick='Edit(" + row.id + ",\""+ row.name + "\",\"" + row.phoneNumber + "\",\"" + row.numberofPerson + "\",\"" + row.numberofClothes + "\",\""+ row.theme + "\",\""+ row.additionalNote + "\",\""+ row.bookingDate + "\"," + row.bookingTime + "," + row.bookingFee + "," + row.duration + ",\""+ row.urlImage + "\")'><i class='fa fa-edit'></i></button> <button type='button' id=btnDelete" + row.id + " class='btn btn-outline-danger btn-rounded waves-light waves-effect w-md delete-datatable' onclick='Delete(" + row.id + ",\""+ row.name + "\",\"" + row.phoneNumber + "\",\"" + row.numberofPerson + "\",\"" + row.numberofClothes + "\",\""+ row.theme + "\",\""+ row.additionalNote + "\",\""+ row.bookingDate + "\"," + row.bookingTime + "," + row.bookingFee + "," + row.duration + ")'><i class='fa fa-minus'></i></button> ");
+                        
+                            }
+                        } 
+                    ]
+                }).buttons().container()
+                    .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+                  
+                  
+                }, {
+                  onlyOnce: true
+                });  
+                $("#loaderModal").modal('show');
+            }  
+            
+            $('#btnSave').click(function () { 
+                swal({
+                    title: 'Konfirmasi',
+                    text: "anda yakin mau menyimpan data ini?",
+                    type: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4fa7f3',
+                    cancelButtonColor: '#d57171',
+                    confirmButtonText: 'OK'
+                }).then(function () {
+                    $("#loaderModal").modal('show');  
+                    const Newdate = new Date();
+                    var boolChk;  
+                    if ($('#DPInput').val() == "0")
+                    {
+                        boolChk = false;
+                    }
+                    else{
+                        boolChk = true;
+                    }
+                    set(ref(database, 'Booking/' + ID),{ 
+                    Id: ID,
+                    Name: nameBooking, 
+                    PhoneNumber: phonenumber, 
+                    NumberofPerson: numberofperson,
+                    NumberofClothes: numberofclothes, 
+                    Theme: theme,
+                    AdditionalNote: additionalnote, 
+                    BookingDate: bookingdate, 
+                    BookingFee: $('#DPInput').val(),
+                    BookingTime: bookinghour,
+                    Duration: duration,
+                    CreatedDate: moment(Newdate).format('YYYY/MM/DD HH:mm:ss'),
+                    IsDeleted: false,
+                    IsPaid: true,
+                    PaidOff: $('#paidOffInput').val(),
+                    UrlImage: imageDataUrl
+                  }).then(() => {
+                      // Data saved successfully!				  
+                        $("#loaderModal").modal('hide');
+                        $("#addEditModal").modal('hide');					
+                        swal(
+                            {
+                                title: 'Berhasil',
+                                text: 'Data berhasil disimpan',
+                                type: 'success',
+                                confirmButtonColor: '#4fa7f3'
+                            }
+                        )  
+                        GetDatatable();                        
+                        $("#loaderModal").modal('hide'); 
+                    })
+                    .catch((error) => {
+                        // The write failed...
+                        swal({
+                            title: 'Alert',
+                            type: 'error',
+                            text: error,
+                            showCloseButton: true,
+                            confirmButtonColor: '#4fa7f3'
+                        })
+                    });  
+                }); 
+            }); 
+            
+            $('#btnConfirmDelete').click(function () {  
+                 
+                const Newdate = new Date(); 
+                var boolChk;  
+                if (feestatus == "0")
+                {
+                    boolChk = false;
+                }
+                else{
+                    boolChk = true;
+                }
+                set(ref(database, 'Booking/' + ID),{ 
+                Id: ID,
+                Name: nameBooking, 
+                PhoneNumber: phonenumber, 
+                NumberofPerson: numberofperson,
+                NumberofClothes: numberofclothes, 
+                Theme: theme,
+                AdditionalNote: additionalnote, 
+                BookingDate: bookingdate, 
+                BookingFee: feestatus,
+                BookingTime: bookinghour,
+                Duration: duration,
+                CreatedDate: moment(Newdate).format('YYYY/MM/DD HH:mm:ss'),
+                IsDeleted: true,
+                IsPaid: boolChk,
+                PaidOff: $('#paidOffInput').val()
+                }).then(() => {
+                    // If data deleted successfully!
+                    $("#DeleteModal").modal('hide');				
+                    swal(
+                        {
+                            title: 'Berhasil',
+                            text: 'Data berhasil dihapus',
+                            type: 'success',
+                            confirmButtonColor: '#4fa7f3'
+                        }
+                    ) 
+                    
+                    GetDatatable();				  
+                    $("#loaderModal").modal('hide');
+                })
+                .catch((error) => {
+                    // The write failed...
+                    swal({
+                        title: 'Alert',
+                        type: 'error',
+                        text: error,
+                        showCloseButton: true,
+                        confirmButtonColor: '#4fa7f3'
+                    })
+                });  
+            });
+             
+        </script>
+        
+        <script src="scripts/bookingList.js"></script>
+        <script src="scripts/common.js"></script>
+
+    </body>
+</html>
