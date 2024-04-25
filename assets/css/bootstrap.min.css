@@ -9343,16 +9343,30 @@ a.text-dark:hover {
 
 .dropdown {
   position: relative;
+  overflow: visible;
   display: inline-block;
+  transition: all 5s; /* Transisi semua properti selama 5 detik */
 }
 
+/* Default style */
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: auto;
+  transition: all 3s; /* Transisi semua properti saat tampil selama 3 detik */
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+/* Media query untuk layar mobile */
+@media screen and (max-width: 767px) {
+  .dropdown-content {
+    position: relative; /* Mengubah posisi menjadi relative pada layar mobile */
+  }
 }
 
 .dropdown-content a {
@@ -9373,4 +9387,5 @@ a.text-dark:hover {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
 /*# sourceMappingURL=bootstrap.min.css.map */
