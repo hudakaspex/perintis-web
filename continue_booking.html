@@ -86,6 +86,18 @@
 		.fadeInBottom-animation {
 			animation: 1.5s fadeInBottom;
 		}
+
+		div.card-box.responsive-height {
+			height: 100vh;
+			color: black;
+		}
+
+		@media (max-width: 480px) {
+			div.card-box.responsive-height {
+				height: 100%;
+				margin-bottom: 0px;
+			}
+		}
 	</style>
 
 </head>
@@ -123,7 +135,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
-			<div class="card-box" style="height:800px;color:black">
+			<div class="card-box responsive-height">
 				<div class="account-logo-box" style="background: linear-gradient(to top, black,black)">
 					<div class="text-center">
 						<p style="color:#ffffff;margin-top:-20px;margin-bottom:30px"><b>
