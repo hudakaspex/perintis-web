@@ -232,6 +232,23 @@
 						</div>
 						<div class="col-3"></div>
 					</div>
+
+					<div class="form-group row m-b-20">
+						<div class="col-12">
+							<small class="w-100 d-block text-center">Pilih Tanggal & Jam Pelaksanaan</small>
+							<div class="d-flex align-items-top justify-content-center">
+								<div id="datePicker2"
+									class="border p-1"
+									style="border-radius: 6px 0px 0px 6px;"
+								>
+								</div>
+								<div id="timePicker2"
+									class="border p-1 d-flex align-items-center"
+									style="border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-left: 0px !important;"
+								></div>
+							</div>
+						</div>
+					</div>
 					
 					<div class="form-group row m-b-20">
 						<div class="col-3"></div>
@@ -467,6 +484,15 @@
 			minDate: new Date(),
 			disabledDates: [new Date(-1)]
 		};
+
+		var options2 = {
+			format: 'DD MMMM YYYY',
+			collapse: false,
+			ignoreReadonly: true,
+			minDate: new Date(),
+			disabledDates: [new Date(-1)],
+			inline: true
+		};
 		
 		var disabledtimes_mapping=['01-14-2024:14'];
 		var hourOptions = {
@@ -483,6 +509,17 @@
 			// 	}
 			// }
 		};
+
+		var hourOptions2 = {
+			format: 'HH',
+			collapse: false,
+			ignoreReadonly: true,
+			enabledHours : [10,11,12,13,14,15,16,17,18,19,20,21,22],
+			inline: true
+		}
+
+		$('#datePicker2').datetimepicker(options2);
+		$('#timePicker2').datetimepicker(hourOptions2);
 
 		$('#datePicker').datetimepicker(options);
 
