@@ -20,6 +20,7 @@ function ClearValidation() {
   $("#datePickerVal").hide();
   $("#timePickerVal").hide();
   $("#durationVal").hide();
+  $("#timePickerValidation").hide();
 }
 
 function ClearText() {
@@ -27,8 +28,6 @@ function ClearText() {
   document.getElementById("waNumberInput").value = "";
   $("#ddlNumberofPersonInput").val("").trigger("change");
   $("#ddlNumberofClothesInput").val("").trigger("change");
-  document.getElementById("datePickerInput").value = "";
-  document.getElementById("timePickerInput").value = "";
   $("#ddlPhotoThemeInput").val("").trigger("change");
   document.getElementById("additionalNoteInput").value = "";
 }
