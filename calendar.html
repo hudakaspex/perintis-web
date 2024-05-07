@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datepicker Example</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Bootstrap Datepicker CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div style="overflow: hidden">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-8">
+              <div id="datepicker"></div>
+              <div class="form-group">
+                <label for="bookingTime">Booking Time</label>
+                <select id="bookingTime" class="form-control" required>
+                  <!-- Option for all available times -->
+                  <option value="" disabled selected>Select Time</option>
+                  <!-- Options for each hour from 10:00 AM to 10:00 PM -->
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                  <option value="18:00">6:00 PM</option>
+                  <option value="19:00">7:00 PM</option>
+                  <option value="20:00">8:00 PM</option>
+                  <option value="21:00">9:00 PM</option>
+                  <option value="22:00">10:00 PM</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+      // Simulated booked times data for demonstration
+      var bookedTimesPerDate = {
+        "2024-04-20": ["10:00", "12:00", "15:00"],
+        "2024-04-21": ["11:00", "13:00", "16:00"],
+        "2024-04-27": ["14:00", "17:00", "19:00"],
+        "2024-04-26": ["10:00", "17:00", "19:00"],
+      };
+
+      // Function to disable booked times for the selected date
+      function disableBookedTimes(selectedDate) {
+        // Get the selected date in YYYY-MM-DD format
+        var formattedSelectedDate =
+          selectedDate.getFullYear() +
+          "-" +
+          ("0" + (selectedDate.getMonth() + 1)).slice(-2) +
+          "-" +
+          ("0" + selectedDate.getDate()).slice(-2);
+        var bookedTimes = bookedTimesPerDate[formattedSelectedDate] || [];
+        var bookingTimeInput = document.getElementById("bookingTime");
+
+        // Enable all options first
+        bookingTimeInput.querySelectorAll("option").forEach(function (option) {
+          option.disabled = false;
+        });
+
+        // Disable booked times for the selected date
+        bookedTimes.forEach(function (time) {
+          var option = bookingTimeInput.querySelector(
+            'option[value="' + time + '"]'
+          );
+          if (option) {
+            option.disabled = true;
+          }
+        });
+      }
+
+      // Wait for the DOM to be fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get the datepicker element
+        var datepicker = document.getElementById("datepicker");
+
+        // Initialize the datepicker with options
+        $(datepicker).datepicker({
+          format: "yyyy-mm-dd", // Date format
+          autoclose: true, // Close the datepicker when a date is selected
+          todayHighlight: true, // Highlight today's date
+          inline: true,
+          sideBySide: true,
+          startDate: new Date(), // Set the start date to today
+          endDate: "+1y", // Set the end date to one year from today
+        });
+
+        // Listen for changeDate event
+        $(datepicker).on("changeDate", function (e) {
+          // Get the selected date
+          var selectedDate = e.date;
+          // Disable booked times for the selected date
+          disableBookedTimes(selectedDate);
+        });
+      });
+    </script>
+  </body>
+</html>

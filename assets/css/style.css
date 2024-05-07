@@ -752,6 +752,9 @@ a:focus {
 }
 
 @media (max-width: 767px) {
+  .nav li {
+    background-color: #f7f7f7 !important;
+  }
   .mt-md-30 {
     margin-top: 30px;
   }
