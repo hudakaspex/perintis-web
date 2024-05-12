@@ -91,7 +91,9 @@
 			height: 100vh;
 			color: black;
 		}
+	</style>
 
+	<style>
 		@media (max-width: 480px) {
 			div.card-box.responsive-height {
 				height: 100%;
@@ -100,9 +102,9 @@
 		}
 
 		.timeSelection-active {
-			background-color: #337ab7;
-			color: #fff;
-			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+			background-color: #337ab7 !important;
+			color: #fff !important;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
 		}
 	</style>
 
@@ -250,22 +252,28 @@
 
 				<div class="account-content" id="content1" style="margin-top:20px">
 					<div class="form-group row m-b-20">
-						<div class="col-12">
-							<small class="w-100 d-block text-center">Pilih Tanggal & Jam Pelaksanaan<span
-									class="text-danger"> *</span></small>
-							<div id="timePickerValidation" class="modalPanah modalCustom"></div>
+						<div class="col-2"></div>
+						<div class="col-8">
+							<small class="w-100 d-block text-center">Pilih Tanggal Pelaksanaan<span class="text-danger">
+									*</span></small>
+							<div id="datePickerValidation" class="modalPanah modalCustom"></div>
 							<div class="d-flex align-items-top justify-content-center">
-								<div id="datePicker2" class="border p-1" style="border-radius: 6px 0px 0px 6px;">
-								</div>
-								<div id="timePicker2" class="border p-1 d-flex align-items-center"
-									style="border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-left: 0px !important;">
+								<div id="datePicker2" class="border p-1 w-100" style="border-radius: 6px">
 								</div>
 							</div>
 						</div>
+						<div class="col-2"></div>
 					</div>
 
-					<div class="form-group row m-b-20 mx-4 border border-right-0 border-bottom-0 text-center"
-						id="timeSelection">
+					<div class="form-group row mx-2">
+						<div class="col-2"></div>
+						<div class="col-8">
+							<small class="w-100 d-block text-center">Pilih Jam Pelaksanaan<span class="text-danger">
+									*</span></small>
+							<div id="timePickerValidation" class="modalPanah modalCustom"></div>
+							<div class="row border border-right-0 border-bottom-0 text-center" id="timeSelection"></div>
+						</div>
+						<div class="col-2"></div>
 					</div>
 
 					<div class="form-group row m-b-20">
@@ -548,28 +556,42 @@
 			const selectedDate = event.date?.format("HH");
 			seletedTimeSchedule = selectedDate;
 		});
-		
-		var timeSelection;
-		const times = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
-		initTimeSelecton();
-		function initTimeSelecton() {
+
+		const times = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+		initTimeSelection();
+		function initTimeSelection() {
 			for (let i = 0; i < times.length; i++) {
 				document.getElementById('timeSelection').innerHTML += `
-					<div role="button" id="timeOption${i}" 
+					<div role="button" id="timeOption${times[i]}" 
 					class="col-3 border border-top-0 border-left-0" style="cursor: pointer" 
-					onclick="timeSelectFn(${times[i]}, ${i})">${times[i] + ':00'}</div>
+					>${times[i] + ':00'}</div>
 				`
 			}
 		}
 
-		window.timeSelectFn = function timeSelectFn(event, index) {
-			for (let i = 0; i < times.length; i++) {
-				document.getElementById(`timeOption${i}`).classList.remove("timeSelection-active");
-			}
-
-			const elSelect = document.getElementById(`timeOption${index}`);
+		initActiveTimeSelection();
+		function initActiveTimeSelection() {
+			const elSelect = document.getElementById(`timeOption${seletedTimeSchedule}`);
 			elSelect.classList.add('timeSelection-active');
-			timeSelection = event;
+		}
+
+		listenTimeSelection();
+		function listenTimeSelection() {
+			for (let i = 0; i < times.length; i++) {
+				document.getElementById(`timeOption${times[i]}`).addEventListener('click', (params) => {
+					removeSelectionTimeClass();
+					document.getElementById(`timeOption${times[i]}`).classList.remove("timeSelection-active");
+					const elSelect = document.getElementById(`timeOption${times[i]}`);
+					elSelect.classList.add('timeSelection-active');
+					seletedTimeSchedule = times[i];
+				})
+			}
+		}
+
+		function removeSelectionTimeClass() {
+			for (let i = 0; i < times.length; i++) {
+				document.getElementById(`timeOption${times[i]}`).classList.remove("timeSelection-active");
+			}
 		}
 
 		function initTimePicker() {
@@ -580,10 +602,10 @@
 			if (hourInNumber < 10) {
 				hourInNumber = 10;
 			}
-			else if (hourInNumber > 22) {
-				hourInNumber = 22;
+			else if (hourInNumber > 21) {
+				hourInNumber = 21;
 			}
-			return hourInNumber?.toString();
+			return hourInNumber;
 		}
 
 		function initDatePicker() {
@@ -652,10 +674,14 @@
 			const Bookdate = new Date(seletedDateSchedule);
 			var _newdate = moment(Newdate).format('YYYY/MM/DD');
 
-			if (seletedDateSchedule == null || seletedDateSchedule == '' || seletedTimeSchedule == null || seletedTimeSchedule == '') {
-				$("#timePickerValidation").show();
-				$("#timePickerValidation").html("Tanggal & Jam wajib diisi");
+			if (seletedDateSchedule == null || seletedDateSchedule == '') {
+				$("#datePickerValidation").show();
+				$("#datePickerValidation").html("Tanggal Pelaksanaan wajib diisi");
 				return
+			}
+			else if (seletedTimeSchedule == null || seletedTimeSchedule == '') {
+				$("#timePickerValidation").show();
+				$("#timePickerValidation").html("Jam Pelaksanaan wajib diisi");
 			}
 			else if (document.getElementById("ddlDurationInput").value == null || document.getElementById("ddlDurationInput").value == '') {
 				$("#durationVal").show();

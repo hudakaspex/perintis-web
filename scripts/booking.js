@@ -21,6 +21,7 @@ function ClearValidation() {
   $("#timePickerVal").hide();
   $("#durationVal").hide();
   $("#timePickerValidation").hide();
+  $("#datePickerValidation").hide();
 }
 
 function ClearText() {
