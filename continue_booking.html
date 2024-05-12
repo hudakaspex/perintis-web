@@ -536,29 +536,11 @@
 			defaultDate: new Date()
 		};
 
-		const newTimeDate = new Date();
-		newTimeDate.setHours(parseInt(seletedTimeSchedule));
-		var hourOptions2 = {
-			format: 'HH',
-			collapse: false,
-			ignoreReadonly: true,
-			enabledHours: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
-			inline: true,
-			defaultDate: newTimeDate
-		}
-
 		$('#datePicker2').datetimepicker(options2);
-		$('#timePicker2').datetimepicker(hourOptions2);
-
 		$('#datePicker2').on("dp.change", function (event) {
 			const selectedDate = event.date?.format("YYYY/MM/DD");
 			seletedDateSchedule = selectedDate;
 			GetDurationByDate(selectedDate);
-		});
-
-		$('#timePicker2').on("dp.change", function (event) {
-			const selectedDate = event.date?.format("HH");
-			seletedTimeSchedule = selectedDate;
 		});
 
 		const times = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
