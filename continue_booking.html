@@ -658,8 +658,7 @@
 				x++
 			});
 			var filterArr = pluginArrayArg.filter(function (obj) {
-				return obj.isDeleted == false && obj.isPaid == true &&
-					obj.bookingDate == date
+				return obj.bookingDate == date
 			});
 
 			var n = 0;
@@ -781,7 +780,7 @@
 				onlyOnce: true
 			});
 			filterArr = pluginArrayArg.filter(function (obj) {
-				return obj.isDeleted == false && obj.bookingDate == _bookdate && obj.isPaid == true && obj.name !== "";
+				return obj.bookingDate == _bookdate && obj.name !== "";
 			});
 			if (!isSendImage) {
 				if (filterArr.length > 0) {
