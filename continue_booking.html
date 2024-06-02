@@ -528,6 +528,7 @@
 		var isSendImage = false;
 		var rangeHour = [];
 		var disabledTimes = [];
+		var bookings = [];
 		var times = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 		var seletedDateSchedule = initDatePicker();
 		var seletedTimeSchedule = null;
@@ -546,8 +547,7 @@
 		$('#datePicker2').on("dp.change", function (event) {
 			const selectedDate = event.date?.format("YYYY/MM/DD");
 			seletedDateSchedule = selectedDate;
-			const selectedDateOndateObj = new Date(selectedDate);
-			validateDisabledTime(selectedDateOndateObj);
+			validateDisabledTime();
 			GetDurationByDate(selectedDate);
 		});
 
@@ -598,38 +598,40 @@
 			return date;
 		}
 
-		function getStringDate(date) {
-			const today = new Date(date);
-			const year = today.getFullYear();
-			const month = ('0' + (today.getMonth() + 1)).slice(-2);
-			const day = ('0' + today.getDate()).slice(-2);
-			return `${year}/${month}/${day}`;
+		getBookedData();
+		function getBookedData() {
+			const bookingsRef = ref(database, '/Booking');
+			bookings = [];
+			onValue(bookingsRef, (snapshot) => {
+				var booking;
+				snapshot.forEach((childSnapshot) => {
+					booking = childSnapshot.val();
+					if (booking.IsDeleted == false && booking.IsPaid && booking.Name !== "") {
+						bookings.push(booking)
+					}
+				});
+				// init date validation
+				validateDisabledTime();
+			});
 		}
 
 		//inital validation for time
-		validateDisabledTime(new Date());
-		function validateDisabledTime(date) {
-			const todayDate = getStringDate(date);
-			const bookingsRef = ref(database, '/Booking');
-			const bookingToday = query(ref(database, 'Booking'), orderByChild('BookingDate'), equalTo(todayDate));
-			onValue(bookingToday, (snapshot) => {
-				getDisabledTimes(snapshot);
-				removeDisableTimeClass();
-				disabledTimes.forEach((time) => {
-					const element = document.getElementById(`timeOption${time}`);
-					element.classList.add('disabledTime');
-				});
-			})
+		function validateDisabledTime() {
+			getDisabledTimes();
+			removeDisableTimeClass();
+			disabledTimes.forEach((time) => {
+				const element = document.getElementById(`timeOption${time}`);
+				element.classList.add('disabledTime');
+			});
 		}
 
-		function getDisabledTimes(snapshot) {
+		function getDisabledTimes() {
 			disabledTimes = [];
-			var child;
-			snapshot.forEach((childSnapshot) => {
-				child = childSnapshot.val();
-				const time = child?.BookingTime;
+			var bookedToday = bookings.filter((booked) => booked.BookingDate == seletedDateSchedule);
+			bookedToday.forEach((booked) => {
+				const time = booked?.BookingTime;
 				const timeOnNum = time ? parseInt(time) : null;
-				for (let i = 0; i < child.Duration; i++) {
+				for (let i = 0; i < booked.Duration; i++) {
 					disabledTimes.push(timeOnNum + i);
 				}
 			});
@@ -645,55 +647,48 @@
 		function GetDurationByDate(date) {
 			var x = 1;
 			var pluginArrayArg = [];
-			const dbRef = ref(database, '/Booking');
-
-			onValue(dbRef, (snapshot) => {
-				snapshot.forEach((childSnapshot) => {
-					const childKey = childSnapshot.key;
-					const childData = childSnapshot.val();
-
-					pluginArrayArg.push({
-						isPaid: childData.IsPaid,
-						isDeleted: childData.IsDeleted,
-						bookingDate: childData.BookingDate,
-						bookingTime: childData.BookingTime,
-						duration: childData.Duration
-					});
-					x++
+			bookings.forEach((booked) => {
+				pluginArrayArg.push({
+					isPaid: booked?.IsPaid,
+					isDeleted: booked?.IsDeleted,
+					bookingDate: booked?.BookingDate,
+					bookingTime: booked?.BookingTime,
+					duration: booked?.Duration
 				});
-				var filterArr = pluginArrayArg.filter(function (obj) {
-					return obj.isDeleted == false && obj.isPaid == true &&
-						obj.bookingDate == date
-				});
+				x++
+			});
+			var filterArr = pluginArrayArg.filter(function (obj) {
+				return obj.isDeleted == false && obj.isPaid == true &&
+					obj.bookingDate == date
+			});
 
-				var n = 0;
-				var hour1 = [];
-				var hour2 = [];
-				for (var i = 0; i < filterArr.length; i++) {
-					var countDuration = parseInt(filterArr[i].duration);
-					var hourInterval = parseInt(filterArr[i].bookingTime);
-					for (var z = 0; z < countDuration; z++) {
-						n = 1;
-						var endRange = parseInt(hourInterval) + n;
-						rangeHour.push(hourInterval);
-						// Find the index of an object with a specific property value
-						let index = rangeHour.findIndex((item) => item === endRange);
+			var n = 0;
+			var hour1 = [];
+			var hour2 = [];
+			for (var i = 0; i < filterArr.length; i++) {
+				var countDuration = parseInt(filterArr[i].duration);
+				var hourInterval = parseInt(filterArr[i].bookingTime);
+				for (var z = 0; z < countDuration; z++) {
+					n = 1;
+					var endRange = parseInt(hourInterval) + n;
+					rangeHour.push(hourInterval);
+					// Find the index of an object with a specific property value
+					let index = rangeHour.findIndex((item) => item === endRange);
 
-						// Check if the object with the specified property value exists in the array
-						if (index === -1) {
-							// If not found, push a new object with the desired properties
-							rangeHour.push(endRange);
-						} else {
-							// If found, log a message indicating that the object already exists
-							console.log("Object already exists");
-						}
-
-
-						hourInterval = hourInterval + n;
+					// Check if the object with the specified property value exists in the array
+					if (index === -1) {
+						// If not found, push a new object with the desired properties
+						rangeHour.push(endRange);
+					} else {
+						// If found, log a message indicating that the object already exists
+						console.log("Object already exists");
 					}
-					n = 0;
+
+
+					hourInterval = hourInterval + n;
 				}
-			})
+				n = 0;
+			}
 		}
 
 		$('#btnSave').click(function () {
@@ -764,117 +759,106 @@
 			var x = 1;
 			var pluginArrayArg = [];
 			var filterArr = [];
-
-			const mostViewedPosts = query(ref(database, 'Booking'), orderByChild('id'));
-			console.log(mostViewedPosts);
-
-			const dbRef = ref(database, '/Booking');
-
-			onValue(dbRef, (snapshot) => {
-				snapshot.forEach((childSnapshot) => {
-					const childKey = childSnapshot.key;
-					const childData = childSnapshot.val();
-
-					pluginArrayArg.push({
-						name: childData.Name,
-						id: childData.Id,
-						phoneNumber:
-							childData.PhoneNumber,
-						numberofPerson: childData.NumberofPerson,
-						numberofClothes: childData.NumberofClothes,
-						theme: childData.Theme, additionalNote:
-							childData.AdditionalNote, bookingTime:
-							childData.BookingTime,
-						bookingDate: childData.BookingDate,
-						bookingFee: childData.BookingFee,
-						isPaid: childData.IsPaid,
-						isDeleted: childData.IsDeleted,
-						duration: childData.Duration
-					});
-					x++
-				}, {
-					onlyOnce: true
+			bookings.forEach((booked) => {
+				pluginArrayArg.push({
+					name: booked.Name,
+					id: booked.Id,
+					phoneNumber:
+						booked.PhoneNumber,
+					numberofPerson: booked.NumberofPerson,
+					numberofClothes: booked.NumberofClothes,
+					theme: booked.Theme, additionalNote:
+						booked.AdditionalNote, bookingTime:
+						booked.BookingTime,
+					bookingDate: booked.BookingDate,
+					bookingFee: booked.BookingFee,
+					isPaid: booked.IsPaid,
+					isDeleted: booked.IsDeleted,
+					duration: booked.Duration
 				});
-				filterArr = pluginArrayArg.filter(function (obj) {
-					return obj.isDeleted == false && obj.bookingDate == _bookdate && obj.isPaid == true && obj.name !== "";
-				});
-				if (!isSendImage) {
-					if (filterArr.length > 0) {
+				x++
+			}, {
+				onlyOnce: true
+			});
+			filterArr = pluginArrayArg.filter(function (obj) {
+				return obj.isDeleted == false && obj.bookingDate == _bookdate && obj.isPaid == true && obj.name !== "";
+			});
+			if (!isSendImage) {
+				if (filterArr.length > 0) {
 
-						var Count = filterArr.length;
-						var rangeHour = [];
-						var rangeHourAction = [];
+					var Count = filterArr.length;
+					var rangeHour = [];
+					var rangeHourAction = [];
 
-						var countDurationAction = parseInt(document.getElementById("ddlDurationInput").value);
-						var hourIntervalAction = parseInt(seletedTimeSchedule);
-						// add interval duration
-						var n = 0;
-						for (var i = 0; i < Count; i++) {
-							var countDuration = parseInt(filterArr[i].duration);
-							var hourInterval = parseInt(filterArr[i].bookingTime);
-							for (var z = 0; z < countDuration; z++) {
-								n = 1;
-								var endRange = parseInt(hourInterval) + n;
-								rangeHour.push(hourInterval + " - " + endRange);
-								hourInterval = hourInterval + n;
-							}
-							n = 0;
-
-							if (filterArr[i].id == _id) {
-								Allow = 0;
-							} else {
-								Allow = 1
-							};
-
-						};
-
-						filterArr = [];
-						pluginArrayArg = [];
-
-						for (var z = 0; z < countDurationAction; z++) {
+					var countDurationAction = parseInt(document.getElementById("ddlDurationInput").value);
+					var hourIntervalAction = parseInt(seletedTimeSchedule);
+					// add interval duration
+					var n = 0;
+					for (var i = 0; i < Count; i++) {
+						var countDuration = parseInt(filterArr[i].duration);
+						var hourInterval = parseInt(filterArr[i].bookingTime);
+						for (var z = 0; z < countDuration; z++) {
 							n = 1;
-							var endRangeAction = parseInt(hourIntervalAction) + n;
-							rangeHourAction.push(hourIntervalAction + " - " + endRangeAction);
-							hourIntervalAction = hourIntervalAction + n;
+							var endRange = parseInt(hourInterval) + n;
+							rangeHour.push(hourInterval + " - " + endRange);
+							hourInterval = hourInterval + n;
 						}
+						n = 0;
 
-						// checking rangeHour vs rangeHourAction
-						if (rangeHour.some(v => rangeHourAction.indexOf(v) !== -1)) {
+						if (filterArr[i].id == _id) {
 							Allow = 0;
 						} else {
-							Allow = 1;
+							Allow = 1
 						};
-						if (_id == "") {
-							Allow = 3;
-						}
 
-						if (Allow == 1) {
-							SaveData(_id, _bookdate);
-						} else if (Allow == 0) {
-							$("#loaderModal").modal('hide');
-							_id = "";
-							const constBookdate = new Date(seletedDateSchedule);
-							// The write failed...
-							swal({
-								title: 'Alert',
-								type: 'error',
-								text: 'Tanggal ' + moment(constBookdate).format('DD MMMM YYYY') + ' jam ' + seletedTimeSchedule + ' sudah terisi.',
-								showCloseButton: true,
-								confirmButtonColor: '#4fa7f3'
-							})
+					};
 
-							return;
-						}
-						else {
-							console.log('stop process');
-						}
+					filterArr = [];
+					pluginArrayArg = [];
 
+					for (var z = 0; z < countDurationAction; z++) {
+						n = 1;
+						var endRangeAction = parseInt(hourIntervalAction) + n;
+						rangeHourAction.push(hourIntervalAction + " - " + endRangeAction);
+						hourIntervalAction = hourIntervalAction + n;
+					}
+
+					// checking rangeHour vs rangeHourAction
+					if (rangeHour.some(v => rangeHourAction.indexOf(v) !== -1)) {
+						Allow = 0;
 					} else {
 						Allow = 1;
-						SaveData(_id, _bookdate);
 					};
-				}
-			});
+					if (_id == "") {
+						Allow = 3;
+					}
+
+					if (Allow == 1) {
+						SaveData(_id, _bookdate);
+					} else if (Allow == 0) {
+						$("#loaderModal").modal('hide');
+						_id = "";
+						const constBookdate = new Date(seletedDateSchedule);
+						// The write failed...
+						swal({
+							title: 'Alert',
+							type: 'error',
+							text: 'Tanggal ' + moment(constBookdate).format('DD MMMM YYYY') + ' jam ' + seletedTimeSchedule + ' sudah terisi.',
+							showCloseButton: true,
+							confirmButtonColor: '#4fa7f3'
+						})
+
+						return;
+					}
+					else {
+						console.log('stop process');
+					}
+
+				} else {
+					Allow = 1;
+					SaveData(_id, _bookdate);
+				};
+			}
 		}
 
 		function SaveData(Id, bookdate) {
