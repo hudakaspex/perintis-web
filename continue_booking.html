@@ -106,6 +106,11 @@
 			color: #fff !important;
 			text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
 		}
+
+		.disabledTime {
+			color: #ccc;
+			cursor: initial;
+		}
 	</style>
 
 </head>
@@ -269,13 +274,12 @@
 						<div class="col-1 col-sm-1 col-md-2"></div>
 						<div class="col-10 col-sm-10 col-md-8">
 							<div class="w-100">
-									<small class="w-100 d-block text-center">Pilih Jam Pelaksanaan<span
-											class="text-danger">
-											*</span></small>
-									<div id="timePickerValidation" class="modalPanah modalCustom"></div>
-									<div class="row border border-right-0 border-bottom-0 text-center"
-										id="timeSelection"></div>
+								<small class="w-100 d-block text-center">Pilih Jam Pelaksanaan<span class="text-danger">
+										*</span></small>
+								<div id="timePickerValidation" class="modalPanah modalCustom"></div>
+								<div class="row border border-right-0 border-bottom-0 text-center" id="timeSelection">
 								</div>
+							</div>
 						</div>
 						<div class="col-1 col-sm-1 col-md-2"></div>
 					</div>
@@ -495,7 +499,7 @@
 		// Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
 		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
-		import { getDatabase, ref, set, get, onValue, query, orderByChild, update } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+		import { getDatabase, ref, set, get, onValue, query, orderByChild, update, equalTo } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 		// TODO: Add SDKs for Firebase products that you want to use
 		// https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -523,8 +527,10 @@
 		var Allow = "";
 		var isSendImage = false;
 		var rangeHour = [];
+		var disabledTimes = [];
+		var times = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 		var seletedDateSchedule = initDatePicker();
-		var seletedTimeSchedule = initTimePicker();
+		var seletedTimeSchedule = null;
 
 		var options2 = {
 			format: 'DD MMMM YYYY',
@@ -540,10 +546,11 @@
 		$('#datePicker2').on("dp.change", function (event) {
 			const selectedDate = event.date?.format("YYYY/MM/DD");
 			seletedDateSchedule = selectedDate;
+			const selectedDateOndateObj = new Date(selectedDate);
+			validateDisabledTime(selectedDateOndateObj);
 			GetDurationByDate(selectedDate);
 		});
 
-		const times = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 		initTimeSelection();
 		function initTimeSelection() {
 			for (let i = 0; i < times.length; i++) {
@@ -557,19 +564,24 @@
 
 		initActiveTimeSelection();
 		function initActiveTimeSelection() {
-			const elSelect = document.getElementById(`timeOption${seletedTimeSchedule}`);
-			elSelect.classList.add('timeSelection-active');
+			if (seletedTimeSchedule) {
+				const elSelect = document.getElementById(`timeOption${seletedTimeSchedule}`);
+				elSelect.classList.add('timeSelection-active');
+			}
 		}
 
 		listenTimeSelection();
 		function listenTimeSelection() {
 			for (let i = 0; i < times.length; i++) {
 				document.getElementById(`timeOption${times[i]}`).addEventListener('click', (params) => {
-					removeSelectionTimeClass();
-					document.getElementById(`timeOption${times[i]}`).classList.remove("timeSelection-active");
-					const elSelect = document.getElementById(`timeOption${times[i]}`);
-					elSelect.classList.add('timeSelection-active');
-					seletedTimeSchedule = times[i];
+					const timeDisabled = disabledTimes.findIndex(val => val == times[i])
+					if (timeDisabled == -1) {
+						removeSelectionTimeClass();
+						document.getElementById(`timeOption${times[i]}`).classList.remove("timeSelection-active");
+						const elSelect = document.getElementById(`timeOption${times[i]}`);
+						elSelect.classList.add('timeSelection-active');
+						seletedTimeSchedule = times[i];
+					}
 				})
 			}
 		}
@@ -580,25 +592,45 @@
 			}
 		}
 
-		function initTimePicker() {
-			var currentDate = new Date();
-			var hour = moment(currentDate).format('HH');
-			var hourInNumber = parseInt(hour);
-			var selectedTime = 0;
-			if (hourInNumber < 10) {
-				hourInNumber = 10;
-			}
-			else if (hourInNumber > 21) {
-				hourInNumber = 21;
-			}
-			return hourInNumber;
-		}
-
 		function initDatePicker() {
 			var currentDate = new Date();
 			var date = moment(currentDate).format("YYYY/MM/DD");
 			return date;
 		}
+
+		function getStringDate(date) {
+			const today = new Date(date);
+			const year = today.getFullYear();
+			const month = ('0' + (today.getMonth() + 1)).slice(-2);
+			const day = ('0' + today.getDate()).slice(-2);
+			return `${year}/${month}/${day}`;
+		}
+
+		//inital validation for time
+		validateDisabledTime(new Date());
+		function validateDisabledTime(date) {
+			const todayDate = getStringDate(date);
+			const bookingsRef = ref(database, '/Booking');
+			const bookingToday = query(ref(database, 'Booking'), orderByChild('BookingDate'), equalTo(todayDate));
+			onValue(bookingToday, (snapshot) => {
+				disabledTimes = [];
+				removeDisableTimeClass();
+				snapshot.forEach((childSnapshot) => {
+					const time = childSnapshot.val()?.BookingTime;
+					const timeOnNum = time ? parseInt(time) : null;
+					disabledTimes.push(timeOnNum); 
+					const element = document.getElementById(`timeOption${time}`);
+					element.classList.add('disabledTime');
+				});
+			})
+		}
+
+		function removeDisableTimeClass() {
+			for (let i = 0; i < times.length; i++) {
+				document.getElementById(`timeOption${times[i]}`).classList.remove("disabledTime");
+			}
+		}
+
 
 		function GetDurationByDate(date) {
 			var x = 1;
@@ -715,7 +747,8 @@
 					});
 				}
 			}
-		})
+		});
+
 
 		function Validation(_id, _bookdate) {
 			var x = 1;
@@ -729,6 +762,7 @@
 
 			onValue(dbRef, (snapshot) => {
 				snapshot.forEach((childSnapshot) => {
+					console.log(childSnapshot.val());
 					const childKey = childSnapshot.key;
 					const childData = childSnapshot.val();
 
