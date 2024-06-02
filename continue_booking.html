@@ -613,16 +613,26 @@
 			const bookingsRef = ref(database, '/Booking');
 			const bookingToday = query(ref(database, 'Booking'), orderByChild('BookingDate'), equalTo(todayDate));
 			onValue(bookingToday, (snapshot) => {
-				disabledTimes = [];
+				getDisabledTimes(snapshot);
 				removeDisableTimeClass();
-				snapshot.forEach((childSnapshot) => {
-					const time = childSnapshot.val()?.BookingTime;
-					const timeOnNum = time ? parseInt(time) : null;
-					disabledTimes.push(timeOnNum); 
+				disabledTimes.forEach((time) => {
 					const element = document.getElementById(`timeOption${time}`);
 					element.classList.add('disabledTime');
 				});
 			})
+		}
+
+		function getDisabledTimes(snapshot) {
+			disabledTimes = [];
+			var child;
+			snapshot.forEach((childSnapshot) => {
+				child = childSnapshot.val();
+				const time = child?.BookingTime;
+				const timeOnNum = time ? parseInt(time) : null;
+				for (let i = 0; i < child.Duration; i++) {
+					disabledTimes.push(timeOnNum + i);
+				}
+			});
 		}
 
 		function removeDisableTimeClass() {
@@ -762,7 +772,6 @@
 
 			onValue(dbRef, (snapshot) => {
 				snapshot.forEach((childSnapshot) => {
-					console.log(childSnapshot.val());
 					const childKey = childSnapshot.key;
 					const childData = childSnapshot.val();
 
