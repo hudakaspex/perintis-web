@@ -543,6 +543,25 @@
 			defaultDate: new Date()
 		};
 
+
+
+		function isToday(date) {
+			const today = new Date();
+
+			// Get the current date components
+			const todayYear = today.getFullYear();
+			const todayMonth = today.getMonth();
+			const todayDate = today.getDate();
+
+			// Get the given date components
+			const givenYear = date.getFullYear();
+			const givenMonth = date.getMonth();
+			const givenDate = date.getDate();
+
+			// Compare the components
+			return todayYear === givenYear && todayMonth === givenMonth && todayDate === givenDate;
+		}
+
 		$('#datePicker2').datetimepicker(options2);
 		$('#datePicker2').on("dp.change", function (event) {
 			const selectedDate = event.date?.format("YYYY/MM/DD");
@@ -635,6 +654,30 @@
 					disabledTimes.push(timeOnNum + i);
 				}
 			});
+			disabledOnFriday();
+			disabledByCurrentTime();
+		}
+
+		// disabled times if current time more than time option
+		function disabledByCurrentTime() {
+			const selectedDate = new Date(seletedDateSchedule);
+			const todayDate = new Date();
+			const today = isToday(selectedDate);
+			if (today) {
+				const currentHour = todayDate?.getHours();
+				disabledTimes = times.filter(time => time < currentHour);
+			}
+		}
+
+		// disabled at 12 o'clock on friday
+		function disabledOnFriday() {
+			const selectedDate = new Date(seletedDateSchedule);
+			const isFriday = (selectedDate.getDay() == 5);
+			if (isFriday) {
+				if ((disabledTimes.findIndex(time => time == 12)) == -1) {
+					disabledTimes.push(12)
+				}
+			}
 		}
 
 		function removeDisableTimeClass() {
@@ -642,7 +685,6 @@
 				document.getElementById(`timeOption${times[i]}`).classList.remove("disabledTime");
 			}
 		}
-
 
 		function GetDurationByDate(date) {
 			var x = 1;
