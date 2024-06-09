@@ -1118,7 +1118,12 @@
 							type: 'success',
 							confirmButtonColor: '#4fa7f3'
 						}
-					)
+					).then((isConfirmed) => {
+						if (isConfirmed) {
+							// The user clicked the "OK" button
+							window.open('https://wa.link/tuims4', '_blank');
+						}
+					});
 
 					return;
 				})
