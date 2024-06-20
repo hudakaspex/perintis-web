@@ -566,7 +566,11 @@
 		$('#datePicker2').on("dp.change", function (event) {
 			const selectedDate = event.date?.format("YYYY/MM/DD");
 			seletedDateSchedule = selectedDate;
+			seletedTimeSchedule = null;
+			$("#datePickerValidation").hide();
 			validateDisabledTime();
+			removeSelectionTimeClass();
+			setDurationOption();
 			GetDurationByDate(selectedDate);
 		});
 
@@ -596,13 +600,18 @@
 					const timeDisabled = disabledTimes.findIndex(val => val == times[i])
 					if (timeDisabled == -1) {
 						removeSelectionTimeClass();
-						document.getElementById(`timeOption${times[i]}`).classList.remove("timeSelection-active");
-						const elSelect = document.getElementById(`timeOption${times[i]}`);
-						elSelect.classList.add('timeSelection-active');
+						setActiveSelectedTime(times[i]);
 						seletedTimeSchedule = times[i];
 					}
+					setDurationOption();
+					$("#timePickerValidation").hide();
 				})
 			}
+		}
+
+		function setActiveSelectedTime(time) {
+			const elSelect = document.getElementById(`timeOption${time}`);
+			elSelect.classList.add('timeSelection-active');
 		}
 
 		function removeSelectionTimeClass() {
@@ -665,7 +674,12 @@
 			const today = isToday(selectedDate);
 			if (today) {
 				const currentHour = todayDate?.getHours();
-				disabledTimes = times.filter(time => time < currentHour);
+				const previousTimes = times
+					.filter(time => {
+						return (disabledTimes.findIndex(val => val == time) == -1);
+					})
+					.filter(time => time < currentHour);
+				disabledTimes = [...disabledTimes, ...previousTimes];
 			}
 		}
 
@@ -683,6 +697,79 @@
 		function removeDisableTimeClass() {
 			for (let i = 0; i < times.length; i++) {
 				document.getElementById(`timeOption${times[i]}`).classList.remove("disabledTime");
+			}
+		}
+
+		// listen to selected duration changes
+		listenDurationChange();
+		function listenDurationChange() {
+			// Initialize Select2
+			$('#ddlDurationInput').select2();
+
+			// Listen for changes
+			$('#ddlDurationInput').on('change', function (e) {
+				var selectedValue = $(this).val(); // Get the selected value
+				if (selectedValue) {
+					const duration = parseInt(selectedValue);
+					selectTimeBasedOnDuration(duration);
+					$("#durationVal").hide();
+				}
+				// Perform any additional actions based on the new value
+			});
+		}
+
+		// set class active on select duration
+		// selected times based on total duration
+		function selectTimeBasedOnDuration(duration) {
+			if (seletedTimeSchedule) {
+				removeSelectionTimeClass();
+				for (let i = 0; i < duration; i++) {
+					if ((seletedTimeSchedule + i) <= (times[times.length - 1])) {
+						setActiveSelectedTime(seletedTimeSchedule + i);
+					}
+				}
+			}
+		}
+
+		function setDurationOption() {
+			const unselectedTimes = times.filter(time => {
+				return disabledTimes.findIndex(val => val == time) == -1;
+			});
+
+			var durationOptions = [];
+			var time = seletedTimeSchedule;
+			while (unselectedTimes.includes(time)) {
+				time += 1;
+				durationOptions.push(time);
+			}
+
+			$("#ddlDurationInput").empty();
+			$("#ddlDurationInput").append(
+				$("<option selected />").val("").text("--Pilih durasi--")
+			);
+			if (
+				document.getElementById("ddlNumberofPersonInput").value == "16-30" ||
+				document.getElementById("ddlNumberofClothesInput").value == "3+"
+			) {
+				durationOptions.forEach((val, i) => {
+					const durationOption = i + 1;
+					if (durationOption <= 6) {
+						if (durationOption !== 1) {
+							$("#ddlDurationInput").append($("<option />").val(`${durationOption}`).text(`${durationOption} Jam`));
+						}
+					}
+				});
+				$("#lblDescDuration").html(
+					"Anda tidak bisa memilih sesi 1 jam foto karena jumlah orang lebih dari 15 atau jumlah tema baju lebih dari 2. Karena durasi 1 jam tidak akan cukup."
+				);
+			} else {
+				durationOptions.forEach((val, i) => {
+					const durationOption = i + 1;
+					if (durationOption <= 6) {
+						$("#ddlDurationInput").append($("<option />").val(`${durationOption}`).text(`${durationOption} Jam`));
+					}
+				});
+				$("#lblDescDuration").html("");
 			}
 		}
 
@@ -785,11 +872,7 @@
 						$("#loaderModal").modal('show');
 						var Id = "";
 						Id = moment(Bookdate).format('YYYYMMDDHHmmss') + "" + seletedTimeSchedule
-
-						// validation and save data
 						Validation(Id, seletedDateSchedule);
-						// console.log(Id,_bookdate) 
-
 					});
 				}
 			}
