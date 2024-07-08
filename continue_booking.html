@@ -543,8 +543,6 @@
 			defaultDate: new Date()
 		};
 
-
-
 		function isToday(date) {
 			const today = new Date();
 
@@ -568,7 +566,7 @@
 			seletedDateSchedule = selectedDate;
 			seletedTimeSchedule = null;
 			$("#datePickerValidation").hide();
-			validateDisabledTime();
+			initDisabledTime();
 			removeSelectionTimeClass();
 			setDurationOption();
 			GetDurationByDate(selectedDate);
@@ -626,21 +624,34 @@
 			return date;
 		}
 
-		getBookedData();
-		function getBookedData() {
-			const bookingsRef = ref(database, '/Booking');
-			bookings = [];
-			onValue(bookingsRef, (snapshot) => {
-				var booking;
-				snapshot.forEach((childSnapshot) => {
-					booking = childSnapshot.val();
-					if (booking.IsDeleted == false && booking.IsPaid && booking.Name !== "") {
-						bookings.push(booking)
-					}
-				});
-				// init date validation
-				validateDisabledTime();
-			});
+		function getStringDate(date) {
+            const today = new Date(date);
+            const year = today.getFullYear();
+            const month = ('0' + (today.getMonth() + 1)).slice(-2);
+            const day = ('0' + today.getDate()).slice(-2);
+            return `${year}/${month}/${day}`;
+		}
+
+		initDisabledTime();
+		async function initDisabledTime() {
+    		try {
+        		$("#loaderModal").modal('show');
+				bookings = [];
+        		const todayDate = getStringDate(seletedDateSchedule);
+        		const bookingsRef = query(ref(database, '/Booking'), orderByChild('BookingDate'), equalTo(todayDate));
+        		const snapshot = await get(bookingsRef);
+        		snapshot.forEach((childSnapshot) => {
+            		const booking = childSnapshot.val();
+            		if (!booking.IsDeleted && booking.IsPaid && booking.Name !== "") {
+                	bookings.push(booking);
+            	}
+        	});
+        		validateDisabledTime();
+    		} catch (error) {
+        		console.error("Error retrieving data: ", error);
+    		} finally {
+        		$("#loaderModal").modal('hide');
+    		}
 		}
 
 		//inital validation for time
@@ -689,7 +700,7 @@
 			const isFriday = (selectedDate.getDay() == 5);
 			if (isFriday) {
 				if ((disabledTimes.findIndex(time => time == 12)) == -1) {
-					disabledTimes.push(12)
+					disabledTimes.push(12);
 				}
 			}
 		}
