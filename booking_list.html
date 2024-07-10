@@ -390,7 +390,6 @@
                     GetDatatable();
                 }
             });
-    
             
             function GetDatatable(){
                 $("#loaderModal").modal('show');
@@ -518,7 +517,6 @@
                             targets: 11,
                             render: function (data, type, row, meta) {
                                 return ("<button type='button' class='btn btn-outline-warning btn-rounded waves-light waves-effect w-md edit-datatable' id='" + row.id + "' onclick='Edit(" + row.id + ",\""+ row.name + "\",\"" + row.phoneNumber + "\",\"" + row.numberofPerson + "\",\"" + row.numberofClothes + "\",\""+ row.theme + "\",\""+ row.additionalNote + "\",\""+ row.bookingDate + "\"," + row.bookingTime + "," + row.bookingFee + "," + row.duration + ",\""+ row.urlImage + "\")'><i class='fa fa-edit'></i></button> <button type='button' id=btnDelete" + row.id + " class='btn btn-outline-danger btn-rounded waves-light waves-effect w-md delete-datatable' onclick='Delete(" + row.id + ",\""+ row.name + "\",\"" + row.phoneNumber + "\",\"" + row.numberofPerson + "\",\"" + row.numberofClothes + "\",\""+ row.theme + "\",\""+ row.additionalNote + "\",\""+ row.bookingDate + "\"," + row.bookingTime + "," + row.bookingFee + "," + row.duration + ")'><i class='fa fa-minus'></i></button> ");
-                        
                             }
                         } 
                     ]
